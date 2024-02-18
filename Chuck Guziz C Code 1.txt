@@ -1,0 +1,116 @@
+//  TapeRead - Read a block into a buffer.
+//  --------------------------------------
+//
+//  On entry, 
+//    Buf = pointer to word (16 bit) buffer
+//    Length = size of buffer in words
+//    Direction = 0 for forward, nonzero for reverse
+//    Track9 = nonzero for 7 track, 0 for 9 track (global)
+//
+//  Returns either the number of bytes read, or
+//     0 - tape is blank
+//    -1 - tape is offline
+//    -2 - buffer overrun
+//
+//  If "Direction" is nonzero, the read will be in a reverse direction--unless
+//  the tape is at BOT.  If so, 0 bytes will be returned.  In any case, the
+//  data returned will be reversed in the buffer (i.e. same as read forward)
+//
+
+int TapeRead( uint16_t *Buf, int Length, int Direction)
+{
+
+  bool
+    inGap;        // if we're in the gap
+
+  uint32_t
+    timeLimit;
+
+  uint16_t
+    status;
+
+  uint16_t 
+    *p = Buf;            // where we stash read data
+
+  int
+    i,
+    wordsRead;
+
+  status = TAPE_STATUS;        // easier to work this way
+
+  if ( !(status & TAPE_STATUS_ONLINE))
+  {
+    Uprintf( "\nTape drive is offline.\n");
+    return -1;
+  } // if offline
+
+//    Make sure that the drive isn't doing something else.
+
+  while ( !(TAPE_STATUS & TAPE_STATUS_READY))
+    NO_OP;    // wait for ready
+
+  if ( Direction)
+  {
+    if ( TAPE_STATUS & TAPE_STATUS_LOADPT)
+      return 0;         // can't read backwards from BOT
+  } // if read backwards
+
+// Reset and prime the gap timer.
+
+  inGap = true;            // start off in the gap
+  EOPCondition = 0;        // say no EOP yet
+  ConfigTapeTimer();
+
+// Begin tape motion.
+
+  gpio_clear( TAPE_CMD_GPIO,
+    (Direction ? TAPE_CMD_REVERSE : TAPE_CMD_FORWARD)); // start moving
+
+  for ( i = 0; (i < Length); i++)
+  {
+    while( gpio_get(TAPE_CLOCK_GPIO, TAPE_CLOCK_BIT) && !EOPCondition)
+    { 
+      NO_OP;
+    } // while strobe is high
+    if (EOPCondition)
+      break;                // we see a gap
+    *p++ = gpio_port_read( TAPE_DATA_GPIO);
+    if (inGap)
+    {
+      timer_enable_counter( TIM2);    // start counting      
+    }    
+    while( !gpio_get(TAPE_CLOCK_GPIO, TAPE_CLOCK_BIT)); // wait for high strobe
+  } // for
+
+//  Stop tape motion
+      
+  gpio_set( TAPE_CMD_GPIO, TAPE_CMD_ALLBUT7); // de-assert everything
+
+  wordsRead = i;     
+  
+//  If we're reading backwards, we need to swap the words in the return.
+
+  if ( Direction)
+  {
+    uint16_t 
+      t, k, *f, *b;
+    
+    k = wordsRead/2;
+      
+    for ( f = Buf, b = Buf + wordsRead -1; k; k--, f++, b--)
+    {
+      t = *f;
+      *f = *b;
+      *b = t;
+    }    // reverse the string  
+  } // if reversing
+
+//    Regardless of direction,  strip extra bits out after complementing.
+
+  for ( i = 0; i < wordsRead; i++)  
+  {
+    Buf[i] =  (~Buf[i] & TrackMask);
+  } // for the whole buffer
+
+  return wordsRead;
+} // TapeRead
