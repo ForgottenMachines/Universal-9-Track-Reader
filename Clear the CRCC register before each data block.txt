@@ -1,0 +1,11 @@
+'Clear the CRC Register between each Data Block?  Well, right or wrong, we're doing it here...				
+'a) Initially the CRC register is clear.				
+			CRCbit0 = 0
+			CRCbit1 = 0
+			CRCbit2 = 0
+			CRCbit3 = 0
+			CRCbit4 = 0
+			CRCbit5 = 0
+			CRCbit6 = 0
+			CRCbit7 = 0
+			CRCbitP = 0		

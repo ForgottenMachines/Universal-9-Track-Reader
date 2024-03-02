@@ -1,0 +1,32 @@
+result->minbits == 9 // the initial 1-bit plus 8 bits of post-block
+or
+result->minbits -= 8;?
+
+result->crc = data[result->minbits - 6] | data[result->minbits - 5] | data[result->minbits - 4];
+
+crc ^= data[i]; // C0..C7,P  (See IBM Form A22-6862-4)
+
+if (crc & 2) crc ^= 0xf0; // if P will become 1 after rotate, invert what will go into C2..C5
+int lsb = crc & 1; // rotate all 9 bits
+crc >>= 1;
+if (lsb) crc |= 0x100; }
+
+crc ^= 0x1af; // invert all except C2 and C4; note that the CRC could be zero if the number of data bytes is odd
+
+------------------------------------------------------------------------------
+
+'1) Add
+'(each bit position is exclusive OR’ed to Cn)
+'2) Rotate
+'Between additions, the CRC register is shifted one position C1 to C2, etc, and C9 to C1.
+'  2.a) If shifting will cause C i to become “1,” then the bits being shifted into positions C4, Cs, C6, and C7 
+'       are inverted.
+'3) Rotate Final
+'After the last data character has been added, the CRC register is shifted once more (same way as 2 and 2.a)
+'4) Write
+'To write the CRC character on tape, the contents of all positions except C4 and C6 are inverted.
+'5) Check Parity is Odd
+
+
+00001110P0 OK
+10101111P1 OK
