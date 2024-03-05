@@ -1,0 +1,15 @@
+Messagebox 
+"        ReadIn = " +
+ReadIn +
+Chr$(13) + 
+Chr$(13) + 
+" BeforeConvert = " +
+BeforeConvert +
+Chr$(13) + 
+Chr$(13) + 
+"BeforeBitShift = " +
+BeforeBitShift +
+Chr$(13) + 
+Chr$(13) + 
+"        Output = " +
+TheOut
