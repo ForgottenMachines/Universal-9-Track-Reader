@@ -1,0 +1,79 @@
+this is readtape version 3.16, compiled on Jul 22 2022 08:46:00, running on Wed Mar  6 09:58:38 2024
+  executable file: D:\Data\MightyFrame\GitHub\Universal-9-Track-Reader\Len Shustek's readtape\examples\9trk_NRZI\readtape.exe
+  command line: readtape -v -m -nrzi -hex -ascii -outp=results\ Microdata_20blks 
+  current directory: D:\Data\MightyFrame\GitHub\Universal-9-Track-Reader\Len Shustek's readtape\examples\9trk_NRZI
+  this is a little-endian computer
+  For more information, see https://github.com/LenShustek/readtape
+
+reading file "Microdata_20blks.tbin"
+the output files will be "results\Microdata_20blks.xxx"
+
+.tbin file header:
+  using .tbin ntrks = 9
+   description: Microdata Reality tape dump
+  converted on: Sun Aug  4 17:58:17 2019
+  max voltage: 4.4V
+  time between samples: 1.280 usec
+
+no .parms file was found, so we're using these internal defaults for the NRZI parameter sets:
+  parms      active, clk_window,  clk_alpha, agc_window,  agc_alpha,   min_peak,  pulse_adj,pkww_bitfrac,  pkww_rise,     midbit,  id
+  {            1,          0,      0.200,          0,      0.300,      1.000,      0.300,      0.700,      0.200,      0.500,   PRM}
+  {            1,          0,      0.300,          0,      0.300,      1.000,      0.400,      0.600,      0.200,      0.500,   PRM}
+  {            1,          2,      0.000,          0,      0.300,      1.000,      0.400,      0.700,      0.200,      0.500,   PRM}
+  {            1,          0,      0.600,          0,      0.300,      1.000,      0.400,      0.600,      0.200,      0.500,   PRM}
+  {            1,          2,      0.000,          1,      0.000,      0.500,      0.500,      0.900,      0.050,      0.500,   PRM}
+  {            1,          0,      0.200,          1,      0.000,      1.000,      0.500,      0.700,      0.050,      0.500,   PRM}
+  {            1,          2,      0.000,          1,      0.000,      0.500,      0.500,      0.700,      0.050,      0.500,   PRM}
+  {            1,          0,      0.600,          1,      0.000,      0.500,      0.500,      0.600,      0.050,      0.500,   PRM}
+
+compile-time decoding constants:
+  peak height closeness threshold: 0.005V
+  nominal peak height for rise calculation: 2.0V
+  AGC maximum: 2
+
+execution-time configuration:
+  9 track NRZI encoding, odd parity, 0 BPI at 50 IPS
+  first sample is at time 7.45257088 seconds on the tape
+  sampling rate is 781,250 Hz (1.28 usec)
+  peak detection window width is 8 samples (10.24 usec)
+  input data order: 0(msb)1234567(lsb)p
+
+  density was set to 800 BPI (25.00 usec/bit) after reading the first 1 blocks and seeing 9,999 transitions in 62 bins that imply 825 BPI
+creating file "results\Microdata_20blks.001.bin"
+creating file "results\Microdata_20blks.hex.ASCII.txt"
+wrote block   1,  512 bytes, 1 try, parmset 0, AGC 0.94-1.09, ok, avg speed 49.66 IPS at time 7.47905280, tap offset 0
+wrote block   2,  512 bytes, 1 try, parmset 0, AGC 0.94-1.06, ok, avg speed 49.14 IPS at time 7.50561280, tap offset 512
+wrote block   3,  512 bytes, 1 try, parmset 0, AGC 0.95-1.09, ok, avg speed 49.61 IPS at time 7.53203200, tap offset 1024
+wrote block   4,  512 bytes, 1 try, parmset 0, AGC 0.92-1.06, ok, avg speed 49.15 IPS at time 7.55865600, tap offset 1536
+wrote block   5,  512 bytes, 1 try, parmset 0, AGC 0.94-1.07, ok, avg speed 49.50 IPS at time 7.58513408, tap offset 2048
+wrote block   6,  512 bytes, 1 try, parmset 0, AGC 0.92-1.07, ok, avg speed 49.21 IPS at time 7.61168512, tap offset 2560
+wrote block   7,  512 bytes, 1 try, parmset 0, AGC 0.93-1.06, ok, avg speed 49.59 IPS at time 7.63811712, tap offset 3072
+wrote block   8,  512 bytes, 1 try, parmset 0, AGC 0.95-1.07, ok, avg speed 48.91 IPS at time 7.66480512, tap offset 3584
+wrote block   9,  512 bytes, 1 try, parmset 0, AGC 0.93-1.07, ok, avg speed 49.48 IPS at time 7.69123328, tap offset 4096
+wrote block  10,  512 bytes, 1 try, parmset 0, AGC 0.93-1.08, ok, avg speed 49.20 IPS at time 7.71783680, tap offset 4608
+wrote block  11,  512 bytes, 1 try, parmset 0, AGC 0.93-1.07, ok, avg speed 49.27 IPS at time 7.74431744, tap offset 5120
+wrote block  12,  512 bytes, 1 try, parmset 0, AGC 0.94-1.06, ok, avg speed 49.12 IPS at time 7.77092352, tap offset 5632
+wrote block  13,  512 bytes, 1 try, parmset 0, AGC 0.92-1.07, ok, avg speed 49.46 IPS at time 7.79737600, tap offset 6144
+wrote block  14,  512 bytes, 1 try, parmset 0, AGC 0.93-1.07, ok, avg speed 49.22 IPS at time 7.82393728, tap offset 6656
+wrote block  15,  512 bytes, 1 try, parmset 0, AGC 0.93-1.07, ok, avg speed 49.29 IPS at time 7.85039872, tap offset 7168
+wrote block  16,  512 bytes, 1 try, parmset 0, AGC 0.92-1.08, ok, avg speed 49.30 IPS at time 7.87698944, tap offset 7680
+wrote block  17,  512 bytes, 1 try, parmset 0, AGC 0.95-1.08, ok, avg speed 49.27 IPS at time 7.90347392, tap offset 8192
+wrote block  18,  512 bytes, 1 try, parmset 0, AGC 0.93-1.05, ok, avg speed 49.38 IPS at time 7.92998528, tap offset 8704
+wrote block  19,  512 bytes, 1 try, parmset 0, AGC 0.93-1.07, ok, avg speed 49.25 IPS at time 7.95652352, tap offset 9216
+wrote block  20,  512 bytes, 1 try, parmset 0, AGC 0.95-1.07, ok, avg speed 49.26 IPS at time 7.98312192, tap offset 9728
+results\Microdata_20blks.001.bin was closed at time 7.98315008 after 10,240 data bytes were extracted from 20 blocks
+
+summary for file "Microdata_20blks.tbin":
+  414,517 samples were processed in 1 seconds (0.050 seconds/block)
+  created 1 output file with a total of 10,240 bytes
+  decoded 0 tape marks and 20 blocks with 10,240 bytes from 0.50 seconds of tape data
+  the last block written was 7.98312192 seconds into the tape
+  0 blocks had errors, 0 had warnings, 0 had mismatched tracks, 0 had bits corrected, 0 had midbit timing errors
+  0 good blocks had to try more than one parmset
+  parmset 0 was tried   20 times and used   20 times, or 100.0%
+
+  created statistics file "results\Microdata_20blks.peakstats.csv" from 37,127 measurements of flux transition positions
+  to graph it from Excel, open the CSV file, then: insert chart 2D line
+  the earliest peak is 24.30 usec, and the latest peak is 26.06 usec
+  that peak difference of 1.75 usec, and the largest standard deviation of 1.58 usec, are 7.0% and 6.3% of the nominal bit spacing
+  head skew is significant; you should try again with the -deskew option
