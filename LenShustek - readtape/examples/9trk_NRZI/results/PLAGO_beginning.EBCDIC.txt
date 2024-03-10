@@ -1,0 +1,2172 @@
+file results\PLAGO_beginning.EBCDIC.txt
+created by readtape version 3.16 on Wed Mar  6 09:58:36 2024
+using text options   -EBCDIC -newline -linesize=64
+
+tape mark at time 3.47568768
+block 1: 800 bytes at time 3.50809856, ok
+ **** LOADER INSTRUCTION REPETOIRE ******************************
+ ********************                                            
+                             ********                            
+ OPERAND TYPES                               ********   TYPE DESC
+ RIPTION                 TYPE DESCRIPTION                    ****
+ ****    1   NO-OPERAND                   2   STATIC-CELL        
+             ********    3   STATIC-CELL,LCL-LABEL        4   LCL
+ -LABEL                      ********    5   GLB-LABEL           
+          6   ANY-LABEL                      ********    7   ONE-
+ NUMBER                   8   ONE-CHARACTER,ANY-LABEL        ****
+ ****    9   STRING,ANY-LABEL            10   STRING             
+             ********   11   LCL-LABEL-1,...,LCL-LABEL-N 12   STK
+ -NAME                       ****
+block 2: 800 bytes at time 3.54009344, ok
+ ****   13   STK-NAME,LCL-LABEL          14   DESC               
+             ********   15   STK-NAME,DESC               16   STK
+ -NAME,DESC,LCL-LABEL        ********   ABBREVIATIONS            
+         17   STK-NAME,STK-NAME              ********   LCL=LOCAL
+          STK=STACK                                          ****
+ ****   DESC=DESCRIPTOR   GLB=GLOBAL                             
+             ********                                            
+                             ********                            
+                                             ******* IDO DEFINITI
+ ONS                               ** LEGEND ********************
+ *** OPCODE TYPE OF OPERAND                        **            
+               ********* ARITHMETIC                              
+   ** ^     NOT                **
+block 3: 800 bytes at time 3.57242624, ok
+ ***                                               ** |     OR   
+               ***** ADD    2   C(W0)+C(DC)->W0                  
+   ** &     AND                ***** SUB    2   C(W0)-C(DC)->W0  
+                   ** P     POINTER            ***** MPY    2   C
+ (W0)*C(DC)->W0                    ** SE    STK-ENTRY          **
+ *** TLY    2   C(DC)+1->DC                        ** E     EXIT-
+ STACK         ***** NEG    1   -C(W0)->W0                       
+   ** W     WORK-STACK         *****                             
+                   ** C( )  CONTENTS-OF        ********* STATIC &
+  WORK DECISION                    ** W0,WN  CONTENTS OF WORK  **
+ *** BEQ    3   =>LL IF C(W0)=C(DC)                ** LL    LOCAL
+ -LABEL        ***** BNE    3   =>LL IF C(W0)^=C(DC)             
+   ** GL     GLOBAL-LABEL      **
+block 4: 800 bytes at time 3.60410368, ok
+ *** BNZ    3   =>LL IF C(DC)^=0                   ** AL     ANY-
+ LABEL         ***** BGE    3   =>LL IF C(W0)>=C(DC)             
+   ** DC     STATIC-CELL       ***** BLE    3   =>LL IF C(W0)<=C(
+ DC)               ** SN     STACKNAME         ***** BEZ    4   =
+ >LL IF C(W0)=0                    ** S      IMMEDIATE-STRING  **
+ *** BDW    4   C(W0)-1->W0,U(W) IF C(W0)=0        ** ->     ASSI
+ GNED-TO       *****            ELSE =>LL                        
+   ** =>     BRANCH-TO         ***** BUW   11   C(W0)=0,1,...N-1 
+                   ** D( )   PUSH-DOWN         *****            U
+ (W) =>LL(0,...,N-1)               ** U( )   POP-UP            **
+ ***                                               ** I      IMME
+ DIATE-BYTE    *****                                             
+   ** C      CURRENT-CHARACTER **
+block 5: 800 bytes at time 3.63634432, ok
+ ***                                               **************
+ *********************** SCAN CONTROL                            
+                               ***** CSF    8   =>AL IF C^=I  ADV
+ ANCE IF I=C            |                      ***** CST    8   =
+ >AL IF C =I  ADVANCE IF I=C            |                      **
+ *** QSF    9   =>AL IF S^=I  ADVANCE IF S=C            |        
+               ***** QST    9   =>AL IF S =I  ADVANCE IF S=C     
+        |                      ***** CON    4   CONSTANT->       
+                       -| SCAN                 *****            W
+ 2,W1 IF BINARY CONST,0->W0             | ADVANCES             **
+ ****           W2,W1 IF FLOAT SINGLE,1->W0             | IF SUCC
+ ESS           *****            W4-W1 IF FLOAT DOUBLE,2->W0      
+        |                      **
+block 6: 800 bytes at time 3.66856576, ok
+ ***            =>LL IF NOT-A-CONSTANT                 -|        
+               ***** IDS    4   IDENTIFIER->W3-W0 (BLANK PADDED) 
+        |                      *****            =>LL IF NOT IDENT
+ IFIER                  |                      ***** SKS    1   S
+ KIP STATEMENT-LEAVES SCAN POINTING AT ;                       **
+ *******UNCONDITIONAL TRANSFER                                   
+               ***** BUN    6   =>AL                             
+                               *********SUBROUTINE LINKAGE       
+                                               ***** BSB    5   D
+ (E) & =>GL                                                    **
+ *** RET    1   U(E) & RETURN                                    
+               *********STATIC AND WORK TRANSMISSIVE AND CONTROL 
+                               **
+block 7: 800 bytes at time 3.70099840, ok
+ *** FET    2   D(W),C(DC)->W0                                   
+               ***** CLA    2   C(DC)->W0                        
+                               ***** EAW    7   D(W),I->W0       
+                                               ***** ASK    2   C
+ (W0)->DC                                                      **
+ *** ASP    2   C(W0)->DC,U(W)                                   
+               ***** SWT    2   C(W0)->T,C(DC)->W0,T->DC   T=TEMP
+                               ***** POW    7   U(W),I TIMES     
+                                               *********STACK OPE
+ RATIONS                                                       **
+ *** AFE   15   D(SN),C(WN,...,W0)->SE,U(WN,...,W0),P->W0        
+               ***** ZFE   15   D(SN),0->SE,C(WN,...,W0)->SE,U(WN
+ ,...,W0),P->W0                **
+block 8: 800 bytes at time 3.73297536, ok
+ *** ARK   14   C(WN,...,WO)->SE VIA P IN WN+1                   
+               ***** ARP   14   C(WN,...,WO)->SE VIA P IN WN+1,U(
+ WN,...,WO)                    ***** FRK   14   C(SE)->WN,...,W0 
+ VIA P IN WO, P ->WN+1                         ***** FRK   14   C
+ (SE)->WN,...,W0 VIA P IN WO, P IS PURGED                      **
+ *** ZOE   15   0->C(SE) VIA P IN WO                             
+               ***** CNT   12   D(W),(COUNT OF CURR. SEG)->W0    
+                               ***** PNE   12   D(SN),D(W),P->W0 
+                                               ***** SRS   16   (
+ WN,...,W0 USED AS ARGS) SEARCHES ACTIVE SEGS                  **
+ ***            =>LL IF NOT FOUND,ELSE U(WN,...,W0),P->W0        
+               ***** RSV   12   PARTITIONS A STACK TO START A NEW
+  SEGMENT                      **
+block 9: 800 bytes at time 3.76523904, ok
+ *** REL   12   RELEASES ACTIVE STACK SEGMENT                    
+               ***** COP   17   COPIES THE ACTIVE STACK SEGMENT T
+ O ANOTHER STACK               ********* ERROR CONTROL AND MESSAG
+ ES                                            ***** SER    7   O
+ UTPUTS MESSAGE ASSOCIATED WITH GIVEN NUM.                     **
+ ***            AND PLACES A $ SIGN UNDER CURRENT CHARACTER      
+               ***** MSG   10   OUTPUTS GIVEN STRING             
+                               ********* MACHINE CODE            
+                                               ***** XIT    7   T
+ HE NUMBER IS USED TO SELECT A SPECIALLY CODED                 **
+ ***            SEQUENCE IN THE T-MACHINE                        
+               ********* DEBUGGING                               
+                               **
+block 10: 800 bytes at time 3.79729920, ok
+ *** DPS   12   DUMPS THE NAMED STACK                            
+               ***** TON    1   TURNS ON GLOBAL SECTION TRACE    
+                               ***** TOF    1   TURNS OFF TRACE  
+                                               ********* INSTRUCT
+ ION GENERATION                                                **
+ *** INS    2   PLACES C(DC) & C(W0) IN THE CODE STACK. U(W).  UP
+ DATES         *****            LOCNTR BY 4.                     
+                               ***** SIN    2   PLACES C(DC) IN T
+ HE CODE STACK. UPDATES LOCNTR BY 2.           ***** INP    2   P
+ LACES LEFT BYTE OF DC INTO RIGHT BYTE OF WO AND PLACES        **
+ ***            C(W0) IN THE CODE STACK. U(W). UPDATES LOCNTR BY 
+ 2.            ***** PRC    2   IF THE RIGHT BYTE OF DC IS >= RIG
+ HT BYTE OF WO &               **
+block 11: 800 bytes at time 3.82949248, ok
+ ***            W0 ^=0, A CODE STACK ENTRY IS MADE FROM W0,      
+               *****            LOCNTR INCREMENTED BY 2 AND U(W).
+  THEN IT REPEATS              *****            THIS PROCESS, OTH
+ ERWISE D(W), C(DC)->WO.                       *****            U
+ (W). THEN IT REPEATS THIS PROCESS. OTHERWISE                  **
+ ***            D(W), C(DC)->W0                                  
+               ***                                               
+                        *        *        EXECUTION INSTRUCTION R
+ EPETOIRE                               *        *               
+                                                        *        
+ ****************************************************************
+ ******          *********TRANSLATION SKELETONS******************
+ ************************        
+block 12: 800 bytes at time 3.86168064, ok
+ *                                                               
+        *        * I.  OPERANDS                                  
+                        *        *                               
+                                        *        *  A. VARIABLES 
+                                                        *        
+ *                                                               
+        *        *   A                    |FET |   0|    IF GLOBA
+ L 0 BECOMES BLOCK#.    *        *                        |ID  | 
+ ->A|    REPLACED BY OFFSET FROM IDBASE *        *               
+                                                        *        
+ *  B. CONSTANTS                                                 
+        *        *                                               
+                        *        
+block 13: 800 bytes at time 3.89370496, ok
+ *   5                    |FBC |   0|                            
+        *        *                        |BC  |->BC|    REPLACED
+  BY OFFSET FROM IDBASE *        *                               
+                                        *        *   5E-1        
+          |FFS |   0|                                   *        
+ *                        |FS  |->FS|    REPLACED BY OFFSET FROM 
+ IDBASE *        *                                               
+                        *        *   639871625E5          |FFD | 
+   0|                                   *        *               
+          |FD  |->FD|    REPLACED BY OFFSET FROM IDBASE *        
+ *                                                               
+        *        *   'ABC'                |FST |   L|            
+                                 
+block 14: 800 bytes at time 3.92576768, ok
+ *                        |ST  |->ST|    REPLACED BY OFFSET FROM 
+ IDBASE *        *                        ABC            (POINTS 
+ TO STRING DOPE VECTOR) *        *                               
+                                        *        *   ''          
+          |FST |   0|                                   *        
+ *                        |ST  |->ST|                            
+        *        *                                               
+                        *        *  C. SUBSCRIPTED VARIABLES     
+                                        *        *               
+                                                        *        
+ *   A(3)                 |FBC |   0|                            
+        *        *                        |BC  |->BC|            
+                        *        
+block 15: 800 bytes at time 3.95771648, ok
+ *                        |FSB |   0|    IF GLOBAL 0 BECOMES BLOC
+ K#     *        *                        |ID  | ->A|    REPLACED
+  BY OFFSET FROM IDBASE *        *                        |   0| 
+   1|                                   *        *               
+                                                        *        
+ *   A(I,J)               |FET |   0|                            
+        *        *                        |ID  | ->I|            
+                        *        *                        |FET | 
+   0|                                   *        *               
+          |ID  | ->J|                                   *        
+ *                        |FSB |   0|                            
+        *        *                        |ID  | ->A|            
+                        *        
+block 16: 800 bytes at time 3.98986496, ok
+ *                        |   0|   2|                            
+        *        *                                               
+                        *        *  D. BUILT-IN FUNCTIONS        
+                                        *        *               
+                                                        *        
+ *   ABS(X)               |FET |   0|                            
+        *        *                        |ID  | ->X|            
+                        *        *                        |FSB | 
+   0|    CHANGED TO BIF                 *        *               
+          |ID  | ABS|    OFFSET ADDRESS OF ABS          *        
+ *                        |   0|   1|                            
+        *        *  E. PROCEDURE FUNCTION REFERENCE              
+                        *        
+block 17: 800 bytes at time 4.02189568, ok
+ *                                                               
+        *        *   F(X,Y)               |FET |   0|            
+                        *        *                        |ID  | 
+ ->X|                                   *        *               
+          |FET |   0|                                   *        
+ *                        |ID  | ->Y|                            
+        *        *                        |FSB |   0|    CHANGED 
+ TO FNC                 *        *                        |ID  | 
+ ->F|    OFFSET FROM CDBASE             *        *               
+          |   0|   2|                                   *        
+ *                                                               
+        *        *   F                    |FET |   0|    CHANGED 
+ TO FNC                 *        
+block 18: 800 bytes at time 4.05392768, ok
+ *                        |ID  | ->F|    OFFSET FROM CDBASE      
+        *        *                                               
+                        *        * II. EXPRESSIONS               
+                                        *        *               
+                                                        *        
+ *   -A                   |FET |   0|                            
+        *        *                        |ID  | ->A|            
+                        *        *                        |PMI | 
+   0|    CONVERSIONS & ARRAY OPERAND    *        *               
+                         DENOTED AFTER FIRST EXECUTION  *        
+ *                                       (APPLIES TO ALL PREFIX A
+ ND     *        *                                        INFIX O
+ PERATORS).             *        
+block 19: 800 bytes at time 4.08624384, ok
+ *                                                               
+        *        *                                               
+                        *        *   ^-A                  |FET | 
+   0|                                   *        *               
+          |ID  | ->A|                                   *        
+ *                        |PMI |   0|                            
+        *        *                        |NOT |   0|            
+                        *        *                               
+                                        *        *   A**B**C     
+          |FET |   0|                                   *        
+ *                        |ID  | ->A|                            
+        *        *                        |FET |   0|            
+                        *        
+block 20: 800 bytes at time 4.11839488, ok
+ *                        |ID  | ->B|                            
+        *        *                        |FET |   0|            
+                        *        *                        |ID  | 
+ ->C|                                   *        *               
+          |EXP |   0|                                   *        
+ *                        |EXP |   0|                            
+        *        *                                               
+                        *        *   A+B*C                |FET | 
+   0|                                   *        *               
+          |ID  | ->A|                                   *        
+ *                        |FET |   0|                            
+        *        *                        |ID  | ->B|            
+                        *        
+block 21: 800 bytes at time 4.15073408, ok
+ *                        |FET |   0|                            
+        *        *                        |ID  | ->C|            
+                        *        *                        |MUL | 
+   0|                                   *        *               
+          |ADD |   0|                                   *        
+ *                                                               
+        *        *                                               
+                        *        *   A=B                  |FET | 
+   0|                                   *        *               
+          |ID  | ->A|                                   *        
+ *                        |FET |   0|                            
+        *        *                        |ID  | ->B|            
+                        *        
+block 22: 800 bytes at time 4.18309120, ok
+ *                        |EQU |   0|                            
+        *        *                                               
+                        *        *   A>B&C<D              |FET | 
+   0|                                   *        *               
+          |ID  | ->A|                                   *        
+ *                        |FET |   0|                            
+        *        *                        |ID  | ->B|            
+                        *        *                        |GRT | 
+   0|                                   *        *               
+          |FET |   0|                                   *        
+ *                        |ID    ->C|                            
+        *        *                        |FET |   0|            
+                        *        
+block 23: 800 bytes at time 4.21569408, ok
+ *                        |ID  | ->D|                            
+        *        *                        |LES |   0|            
+                        *        *                        |AND | 
+   0|                                   *        *               
+                                                        *        
+ *   A||B||C              |FET |   0|                            
+        *        *                        |ID  | ->A|            
+                        *        *                        |FET | 
+   0|                                   *        *               
+          |ID  | -B|                                    *        
+ *                        |CAT |   0|                            
+        *        *                        |FET |   0|            
+                        *        
+block 24: 800 bytes at time 4.24785280, ok
+ *                        |ID  | ->C|                            
+        *        *                        |CAT |   0|            
+                        *        *                               
+                                        *        *   A*(B+C)     
+          |FET |   0|                                   *        
+ *                        |ID  | ->A|                            
+        *        *                        |FET |   0|            
+                        *        *                        |ID  | 
+ ->B|                                   *        *               
+          |FET |   0|                                   *        
+ *                        |ID  | ->C|                            
+        *        *                        |ADD |   0|            
+                        *        
+block 25: 800 bytes at time 4.28013696, ok
+ *                        |MUL |   0|                            
+        *        *                                               
+                        *        *   A|B&C                |FET | 
+   0|                                   *        *               
+          |ID  | ->A|                                   *        
+ *                        |FET |   0|                            
+        *        *                        |ID  | ->B|            
+                        *        *                        |FET   
+   0|                                   *        *               
+          |ID  | ->C|                                   *        
+ *                        |AND |   0|                            
+        *        *                        |OR  |   0|            
+                        *        
+block 26: 800 bytes at time 4.31206912, ok
+ *                                                               
+        *        *                                               
+                        *        *                               
+                                        *        * III. ASSIGNMEN
+ T STATEMENT                                            *        
+ *  A=E;                  |FET |   0|                            
+        *        *                        |ID  | ->A|            
+                        *        *                        (E)    
+                                        *        *               
+          |STD |   0|    CONVERSIONS AND ARRAY TARGET   *        
+ *                                       DENOTED AFTER FIRST EXEC
+ UTION  *        *                                               
+                        *        
+block 27: 800 bytes at time 4.34452352, ok
+ *  A,B=E;                |FET |   0|                            
+        *        *                        |ID  | ->A|            
+                        *        *                        |FET | 
+   0|                                   *        *               
+          |ID  | ->B|                                   *        
+ *                        (E)                                    
+        *        *                        |ST0 |   0|    (SAME AS
+  ABOVE NOTE)           *        *                        |STD | 
+   0|                                   *        *               
+                                                        *        
+ *  A(I,J)=E;             |FET |   0|                            
+        *        *                        |ID  | ->I|            
+                        *        
+block 28: 800 bytes at time 4.37680896, ok
+ *                        |FET |   0|                            
+        *        *                        |ID  | ->J|            
+                        *        *                        |FSB | 
+   0|                                   *        *               
+          |ID  | ->A|                                   *        
+ *                        |   0|   2|                            
+        *        *                        (E)                    
+                        *        *                        STD    
+                                        *        * IV. IF STATEME
+ NT                                                     *        
+ *                                                               
+        *        *  IF E THEN S1;         (E)                    
+                        *        
+block 29: 800 bytes at time 4.40900608, ok
+ *                        |BFL |   0|    CONVERSION DENOTED IF NE
+ CESSARY*        *                        |GL  | GL0|    REPLACED
+  BY OFFSET FROM CDBASE *        *                        (S1)   
+                                        *        *               
+          GL0:                                          *        
+ *                                                               
+        *        *  IF E THEN S1;         (E)                    
+                        *        *   ELSE S2;             |BFL | 
+   0|                                   *        *               
+          |GL  | GL0|                                   *        
+ *                        (S1)                                   
+        *        *                        |TRG |   0|            
+                        *        
+block 30: 800 bytes at time 4.44091008, ok
+ *                        |GL  | GL1|    REPLACED BY OFFSET FROM 
+ CDBASE *        *                        GL0:                   
+                        *        *                        (S2)   
+                                        *        *               
+          GL1:                                          *        
+ *                                                               
+        *        * V. GOTO STATEMENT                             
+                        *        *                               
+                                        *        *  GOTO A;      
+          |TRA |   0|    REPLACES 0 BY NEST LEVEL OF A  *        
+ *                        |ID  | ->A|    REPLACED BY OFFSET FROM 
+ CDBASE *        *                                       (FOR LAB
+ EL VARIABLES, NEST IS           
+block 31: 800 bytes at time 4.47317760, ok
+ *                                        SET TO 255).           
+                 *                                               
+                                 *  GO TO A(EXPR);        (EXPR) 
+                                                 *               
+          |FSB | BL#|                                            
+ *                        |ID  | ->A|                            
+                 *                        |   0|   1|            
+                                 *                        |TRA | 
+ 255|    255 (X'FF') INDICATES TRANSFER          *               
+          |ID  | ->A|    VIA LABEL VARIABLE                      
+ *                                                               
+                 *                                               
+                                 
+block 32: 800 bytes at time 4.50513280, ok
+ *                                                               
+        *        *                                               
+                        *        * VI. STOP STATEMENT            
+                                        *        *               
+                                                        *        
+ *  STOP;                 |STP |   0|                            
+        *        *                                               
+                        *        * VII. CALL STATEMENT           
+                                        *        *               
+                                                        *        
+ *  CALL A;               |LNK |   0|                            
+        *        *                        |ID  | ->A|    OFFSET F
+ ROM CDBASE             *        
+block 33: 800 bytes at time 4.53735552, ok
+ *                                                               
+        *        *  CALL A(X,Y);          |FET |   0|            
+                        *        *                        |ID  | 
+ ->X|                                   *        *               
+          |FET |   0|                                   *        
+ *                        |ID  | ->Y|                            
+        *        *                        |LNK |   2|            
+                        *        *                        |ID  | 
+ ->A|                                   *        *               
+                                                        *        
+ * VIII. RETURN STATEMENT                                        
+        *        *                                               
+                        *        
+block 34: 800 bytes at time 4.56928768, ok
+ *  RETURN;               |RET |   0|                            
+        *        *                                               
+                        *        *  RETURN(E);            (E)    
+                                        *        *               
+          |RTF |   0|                                   *        
+ *                                                               
+        *        *                                               
+                        *        * IX. DO GROUPS                 
+                                        *        *               
+                                                        *        
+ *  DO; ... END;          NO CODE GENERATED                      
+        *        *                                               
+                        *        
+block 35: 800 bytes at time 4.60153984, ok
+ *                                                               
+        *        *                                               
+                        *        *                               
+                                        *        *               
+                                                        *        
+ *  DO WHILE(E);          |DOW |NEST|                            
+        *        *   .                    |GL  | GLO|    END LOOP
+  ADDRESS               *        *   .                    |GL  | 
+ GL1|    LOOP RETURN ADDRESS            *        *   .           
+          GL1:                                          *        
+ *  END;                  (E)                                    
+        *        *                        |WHT |   0|    CONVERSI
+ ON DENOTED IF NECESSARY*        
+block 36: 800 bytes at time 4.63353984, ok
+ *                        (BODY)                                 
+        *        *                        |LTR |   0|    TRANSFER
+  TO GL1                *        *                        GLO:   
+                                        *        *               
+          |PTM |NEST|                                   *        
+ *                                                               
+        *        *                                               
+                        *        *                               
+                                        *        *               
+                                                        *        
+ *                                                               
+        *        *   DO V=E;              |DOI |NEST|            
+                        *        
+block 37: 800 bytes at time 4.66552320, ok
+ *   .                    |FET |   0|                            
+        *        *   .                    |ID  | ->V|            
+                        *        *   .                    (E)    
+                                        *        *  END;         
+          |FBC |   0|    DUMMY TO MAKE GLABELS MATCH    *        
+ *                        |BC  |->BC|    FOR THE GENERAL CASE.   
+        *        *                        |FBC |   0|            
+                        *        *                        |BC  |-
+ >BC|                                   *        *               
+          |STR |   0|    CONVERSION DENOTED IF NECESSARY*        
+ *                        |GL  | GL1|                            
+        *        *                        |GL  | GL0|            
+                        *        
+block 38: 800 bytes at time 4.69783168, ok
+ *                        (BODY)                                 
+        *        *                        |LTR |   0|            
+                        *        *                        GL0:   
+                                        *        *               
+          |PTM |NEST|                                   *        
+ *                                                               
+        *        *                                               
+                        *        *                               
+                                        *        *               
+                                                        *        
+ *                                                               
+        *        *  DO V=E1 TO E2 BY E3   |DOI |NEST|            
+                        *        
+block 39: 800 bytes at time 4.73020928, ok
+ *   WHILE(E4);           |FET |   0|                            
+        *        *   .                    |ID  | ->V|            
+                        *        *   .                    (E1)   
+                                        *        *  END;         
+          (E2)                                          *        
+ *                        (E3)          REPLACED BY FBC ->0 IF AB
+ SENT   *        *                        |STR |   0|            
+                        *        *                        |GL  | 
+ GL0|                                   *        *               
+          |GL  | GL1|                                   *        
+ *                        |TRG |   0|                            
+        *        *                        |GL  | GL2|            
+                        *        
+block 40: 800 bytes at time 4.76228352, ok
+ *                        GL1:                                   
+        *        *                        |LPI |   0|            
+                        *        *                        GL2:   
+                                        *        *               
+          |LPT     0|                                   *        
+ *                        (E4)          DROPS OUT IF WHILE       
+        *        *                        |WHT |   0|    NOT SPEC
+ IFIED                  *        *                        (BODY) 
+                                        *        *               
+          |LTR |   0|                                   *        
+ *                        GLO:                                   
+        *        *                        |PTM |NEST|            
+                        *        
+block 41: 800 bytes at time 4.79459968, ok
+ *                                                               
+        *        *                                               
+                        *        *                               
+                                        *        *   DO V=E1 BY E
+ 2        |DOI |NEST|                                   *        
+ *   WHILE(E3);           |FET |   0|                            
+        *        *   .                    |ID  | ->V|            
+                        *        *   .                    (E1)   
+                                        *        *   .           
+          |FBC |   0|    DUMMY TO MATCH GENERAL CASE    *        
+ *  END;                  |BC  |->BC|                            
+        *        *                        (E2)                   
+                        *        
+block 42: 800 bytes at time 4.82709504, ok
+ *                        |STR |   0|                            
+        *        *                        |GL  | GL0|            
+                        *        *                        |GL  | 
+ GL1|                                   *        *               
+          |TRG |   0|                                   *        
+ *                        |GL  | GL2|                            
+        *        *                        GL1:                   
+                        *        *                        |LPI | 
+   0|                                   *        *               
+          GL2:                                          *        
+ *                        (E3)           DROPS OUT IF            
+        *        *                        |WHT |   0|    NOT SPEC
+ IFIED                  *        
+block 43: 800 bytes at time 4.85898112, ok
+ *                        (BODY)                                 
+        *        *                        |LTR|    0|            
+                        *        *                        GLO:   
+                                        *        *               
+          |PTM |NEST|                                   *        
+ *                                                               
+        *        *                                               
+                        *        *  DO V=E1,              |DOI |N
+ EST|                                   *        *     E2 TO E3 B
+ Y E4,    |FET |   0|                                   *        
+ *      E5 WHILE(E6);     |ID  | ->V|                            
+        *        *   .                    (E1)                   
+                        *        
+block 44: 800 bytes at time 4.89116416, ok
+ *   .                    |FBC |   0|    DUMMY                   
+        *        *   .                    |BC  |->BC|            
+                        *        *  END;                  |FBC | 
+   0|                                   *        *               
+          |BC  |->BC|                                   *        
+ *                        |STR |   0|                            
+        *        *                        |GL  | GL1|            
+                        *        *                        |GL  | 
+ GL0|                                   *        *               
+          |TRG |   0|                                   *        
+ *                        |GL  | GL2|                            
+        *        *                        GL0:                   
+                        *        
+block 45: 800 bytes at time 4.92333056, ok
+ *                        |PTV |   0|                            
+        *        *                        (E2)                   
+                        *        *                        (E3)   
+                                        *        *               
+          (E4)                                          *        
+ *                        |STR |   0|                            
+        *        *                        |GL  | GL3|            
+                        *        *                        |GL  | 
+ GL4|                                   *        *               
+          |TRG |   0|                                   *        
+ *                        |GL  | GL5|                            
+        *        *                        GL4:                   
+                        *        
+block 46: 800 bytes at time 4.95542912, ok
+ *                        |LPI |   0|                            
+        *        *                        GL5:                   
+                        *        *                        |LPT | 
+   0|                                   *        *               
+          |TRG |   0|                                   *        
+ *                        |GL  | GL2|                            
+        *        *                        GL3:                   
+                        *        *                        |PTV | 
+   0|                                   *        *               
+          (E5)                                          *        
+ *                        |FBC |   0|    DUMMY                   
+        *        *                        |BC  |->BC|            
+                        *        
+block 47: 800 bytes at time 4.98735744, ok
+ *                        |FBC |   0|                            
+        *        *                        |BC  |->BC|            
+                        *        *                        |STR | 
+   0|                                   *        *               
+          |GL  | GL6|                                   *        
+ *                        |GL  | GL7|                            
+        *        *                        GL7:                   
+                        *        *                        (E6)   
+                                        *        *               
+          |WHT |   0|                                   *        
+ *                        GL2:                                   
+        *        *                        (BODY)                 
+                        *        
+block 48: 800 bytes at time 5.01949568, ok
+ *                        |LTR |   0|                            
+        *        *                        GL6:                   
+                        *        *                        |PTM |N
+ EST|                                   *        *               
+                                                        *        
+ * XI. GET STATEMENT                                             
+        *        *                                               
+                        *        *  GET LIST(A,B);        |FET | 
+   0|                                   *        *               
+          |ID  | ->A|                                   *        
+ *                        |FET |   0|                            
+        *        *                        |ID  | ->B|            
+                        *        
+block 49: 800 bytes at time 5.05185152, ok
+ *                        |GLS |   2|                            
+        *        *                                               
+                        *        *  GET DATA(A,B);        |FET | 
+   0|                                   *        *               
+          |ID  | ->A|                                   *        
+ *                        |FET |   0|                            
+        *        *                        |ID  | ->B|            
+                        *        *                        |GDT | 
+   2|                                   *        *               
+                                                        *        
+ *  GET DATA;             |GDB | BL#|                            
+        *        *                                               
+                        *        
+block 50: 800 bytes at time 5.08396288, ok
+ * XII, PUT STATEMENT                                            
+        *        *                                               
+                        *        *  PUT LIST(E1,E2);      (E1)   
+                                        *        *               
+          (E2)                                          *        
+ *                        |PLS |   2|                            
+        *        *                                               
+                        *        *                               
+                                        *        *               
+                                                        *        
+ *   PUT DATA(A,B);       |FET |   0|   NOTE-RESTRICTED TO VARIAB
+ LE     *        *                        |ID  | ->A|    NAMES. S
+ UBSCRIPTS NOT PERMITTED*        
+block 51: 800 bytes at time 5.11577856, ok
+ *                        |FET |   0|                            
+        *        *                        |ID  | ->B|            
+                        *        *                        |PDT | 
+   2|                                   *        *               
+                                                        *        
+ *  PUT DATA;             |PDB | BL#|                            
+        *        *                                               
+                                 *  PUT PAGE LINE(E);     |PGE | 
+   0|                                   *        *               
+          (E)                                           *        
+ *                        |LNE |   0|                            
+        *        *                                               
+                        *        
+block 52: 800 bytes at time 5.14794112, ok
+ *  PUT SKIP;             |FBC |   0|    MAY BE AN EXPRESSION    
+        *        *                        |BC  |->BC|    DEFAULT 
+ SKIP OF ONE            *        *                        |SKP | 
+   0|                                   *        *               
+                                                        *        
+ *                                                               
+        *        *                                               
+                        *        * XIII. PROCEDURE BLOCKS        
+                                        *        *               
+                                                        *        
+ *                                                               
+        *        *                                               
+                        *        
+block 53: 800 bytes at time 5.18002048, ok
+ *                                                               
+        *        *   A:PROC (X,Y);        |TRG |   0|            
+                        *        *   .                    |GL  | 
+ GL2|                                   *        *   .           
+          |PRC |NEST|                                   *        
+ *   .                    |ID  | ->0|   REPLACE WITH OFFSET FROM 
+ IDBASE *        *  END;                  |TRG |   0|            
+                        *        *                        |GL  | 
+ GL1|                                   *        *               
+          GL0:                                          *        
+ *                        (BODY)                                 
+        *        *                        |PTM |NEST|            
+                        *        
+block 54: 800 bytes at time 5.21176576, ok
+ *                        GL1:                                   
+        *        *                        (PROLOGUE)             
+                        *        *                        |TRG | 
+   0|                                   *        *               
+          |GL  | GL0|                                   *        
+ *                        GL2:                                   
+        *        *                                               
+                        *        * XIV. BEGIN BLOCKS             
+                                        *        *               
+                                                        *        
+ *  BEGIN;                |BEG |NEST|                            
+        *        *    .                   |ID  | ->0|   REPLACE W
+ ITH OFFSET FROM IDBASE *        
+block 55: 800 bytes at time 5.24410240, ok
+ *    .                   |GL  | GL2|                            
+        *        *    .                   |TRG |   0|            
+                        *        *  END;                  |GL  | 
+ GL1|                                   *        *               
+          GLO:                                          *        
+ *                        (BODY)                                 
+        *        *                        |PTM |NEST|            
+                        *        *                        GL1:   
+                                        *        *               
+          (PROLOGUE)                                    *        
+ *                        |TRG |   0|                            
+        *        *                        |GL  | GL0|            
+                        *        
+block 56: 800 bytes at time 5.27601792, ok
+ *                        GL2:                                   
+        *        *                                               
+                        *        * XV. DECLARE STATEMENT         
+                                        *        *               
+                                                        *        
+ *  DCL A(E1:E2);         (E1)                                   
+        *        *                        (E2)                   
+                        *        *                        |DVS | 
+   0|                                   *        *               
+          |ID  | ->A|    OFFSET FORM IDBASE             *        
+ *                                                               
+        *        *  DCL A(5);             |FBC |   0|            
+                        *        
+block 57: 800 bytes at time 5.30821376, ok
+ *                        |BC  |->BC|    TO THE CONSTANT 1.      
+        *        *                        |FBC |   0|            
+                        *        *                        |BC  |-
+ >BC|                                   *        *               
+          |DVS |   0|                                   *        
+ *                        |ID  | ->A|                            
+        *        *  DCL A CHAR(5);        |FBC |   0|            
+                        *        *                        |BC  |-
+ >BC|                                   *        *               
+          |DVS |   0|                                   *        
+ *                        |ID  | ->A|                            
+        *        *                                               
+                        *        
+block 58: 800 bytes at time 5.34024704, ok
+ *  DCL A(*) CHAR(*) VAR; |FBC |   0|                            
+        *        *                        |BC  |->BC|            
+                        *        *                        |FBC | 
+   0|                                   *        *               
+          |BC  |->BC|                                   *        
+ *                        |FBC |   0|    STRING LENGTH           
+        *        *                        |BC  |->BC|            
+                        *        *                        |DVS | 
+   0|                                   *        *               
+          |ID  | ->A|                                   *        
+ *                                                               
+        *        *                                               
+                        *        
+block 59: 800 bytes at time 5.37211904, ok
+ ****************************************************************
+ *****************                                               
+                                 *                               
+                                                 *               
+                                                                 
+ * XVI.  LABEL ARRAY INITIALIZATION                              
+                 *                                               
+                                 * A(EXPR): STMT;         (EXPR) 
+         (THIS CODE IS GENERATED AS PART         *               
+          |FSB | BL#|    OF THE PROLOGUE).                       
+ *                        |ID  | ->A|                            
+                 *                        |   0|   1|            
+                                 
+block 60: 800 bytes at time 5.40395648, ok
+ *                        |LBL |NEST|    NEST LEVEL OF STATEMENT 
+                 *                        |  LOCNTR |    CODESTAC
+ K OFFSET OF STATEMENT           *                               
+                                                 *               
+                                                                 
+ *                                                               
+                 *                                               
+                                 * XVII. 'ON' STATEMENTS.        
+                                                 *               
+                                                                 
+ * ON <CONDITION> STOP:   |ONC |   #|    ON-CONDITION NUMBER     
+                 *                        |TRG |   0|    TRANSFER
+  AROUND ON-UNIT                 
+block 61: 800 bytes at time 5.43596160, ok
+ *                        |GL  | GL0|                            
+                 *                        |STP |  0|             
+                                 *                    GL0:    ...
+                                                 *               
+                                                                 
+ * ON <CONDITION> SYSTEM; |ONC |   #|                            
+                 *                        |TRG |   0|            
+                                 *                        |GL  | 
+ GL0|                                            *               
+          |   0|   0|    0 INDICATES 'SYSTEM'                    
+ *                    GL0:    ...                                
+                 *                                               
+                                 
+block 62: 800 bytes at time 5.46817024, ok
+ * ON <CONDITION>;        |ONC |   #|                            
+                 *                        |TRG |   0|            
+                                 *                        |GL  | 
+ GL0|                                            *               
+          |   2|   0|    2 INDICATES RETURN FROM ON-UNIT         
+ *                    GL0:    ...                                
+                 *                                               
+                                 * ON <CONDITION> GOTO A; |ONC | 
+   #|                                            *               
+          |TRG |   0|                                            
+ *                        |GL  | GL0|                            
+                 *                        |TRA |   0|            
+                                 
+block 63: 800 bytes at time 5.50046592, ok
+ *                        |ID  | ->A|                            
+                 *                    GL0:    ...                
+                                 *                               
+                                                 *               
+                                                                 
+ ****************************************************************
+ ***** **        * CODE STACK                                    
+                                 *    CONTAINS THE INSTRUCTIONS G
+ ENERATED BY THE FIRST PASS TRANSLATION.         *    INSTRUCTION
+ S ARE ENTERED VIA THE INS,SIN,INP,AND PRC IDO'S.                
+ *             |-------|-------|                                 
+                 *   FORMAT:   |   A   |   B   |        TWO-BYTE 
+ ENTRIES                         
+block 64: 800 bytes at time 5.53230720, ok
+ *             |-------|-------|                                 
+                 *   A= OPERATION CODE                           
+                                 *   B= OPERAND, OR NOT USED     
+                                                 *    SOME INSTRU
+ CTIONS USE MORE THAN ONE ENTRY.                                 
+ *    SEE THE TRANSLATION SKELETONS.                             
+                 *                                               
+                                 *                               
+                                                 *               
+                                                                 
+ *                                                               
+                 *                                               
+                                 
+block 65: 800 bytes at time 5.56425728, ok
+ * IDENTIFIER STACK                                              
+                 *                                               
+                                 *   CONTAINS ALL OF THE IDENTIFI
+ ERS DECLARED AND REFERENCED IN THE              *   EXTERNAL PRO
+ CEDURE, INCLUDING STATEMENT-LABELS,PROCEDURE-IDENTI-            
+ *   FIERS, VARIABLES, BUILT-IN FUNCTIONS, AND PSEUDO-VARIABLES. 
+  THE            *   STACK IS RESERVED UPON ENTRANCE TO A BLOCK A
+ ND ALL DECLARED AND             *   REFERENCED IDENTIFIERS IN TH
+ E BLOCK ARE PLACED IN A NEW SEGMENT.            *    UPON EXITIN
+ G FROM A BLOCK, THE CURRENT IDENTIFIER STACK SEGMENT IS         
+ *   COPIED TO TEMP$ID.  AT THE END OF FIRST PASS TRANSLATION, AL
+ L               *   INTERNAL BLOCK IDENTIFIERS WILL BE IN TEMP$I
+ D.                              
+block 66: 800 bytes at time 5.59624704, ok
+ * THE FIRST ENTRY IS USED TO CONTAIN CERTAIN BLOCK INFORMATION A
+ S               * DENOTED BY THE SECOND FORMAT.                 
+                                 *                               
+                                                 *             |-
+ ---------------|                                                
+ *             |       A        |        SIXTEEN-BYTE ENTRIES    
+                 *             |----------------|                
+                                 *             |       A        |
+                                                 *             |-
+ ---------------|                                                
+ *             |       A        |                                
+                 *             |----------------|                
+                                 
+block 67: 800 bytes at time 5.62871680, ok
+ *             |       A        |                                
+                 *             |----------------|                
+                                 *             |   B   |   C    |
+                                                 *             |-
+ ---------------|                                                
+ *             |       D        |                                
+                 *             |----------------|                
+                                 *             |   E   |   F    |
+                                                 *             |-
+ ---------------|                                                
+ *             |       G        |                                
+                 *             |----------------|                
+                                 
+block 68: 800 bytes at time 5.66079488, ok
+ *                                                               
+                 *   A= THE IDENTIFIER                           
+                                 *                               
+                                                 *   B= TYPE CODE
+  FOR THE IDENTIFIER                                             
+ *                                                               
+                 *        STATUS AND OTHER INFO = FIRST 4 BITS (I
+ N HEXADECIMAL)                  *          0 - SCALAR           
+                                                 *          2 - A
+ RRAY                                                            
+ *          4 - SCALAR PARAMETER                                 
+                 *          6 - ARRAY PARAMETER                  
+                                 
+block 69: 800 bytes at time 5.69278976, ok
+ *          1 - SCALAR TEMPORARY                                 
+                 *          3 - ARRAY TEMPORARY                  
+                                 *          8 - BUILT-IN FUNCTION
+                                                 *          C - P
+ ROCEDURE                                                        
+ *                                                               
+                 *        DATA TYPE = SECOND 4 BITS (IN HEXADECIM
+ AL)                             *          0 - UNDEFINED        
+                                                 *          2 - B
+ INARY FIXED                                                     
+ *          4 - SINGLE FLOAT                                     
+                 *          6 - DOUBLE FLOAT                     
+                                 
+block 70: 800 bytes at time 5.72465408, ok
+ *          8 - CHARACTER VARYING                                
+                 *          A - CHARACTER                        
+                                 *          C - STATEMENT-LABEL C
+ ONSTANT OR VARIABLE                     00006420*               
+                                                                 
+ *    C= NEST LEVEL FOR STATEMENT-LABELS OR PROCEDURE-IDENTIFIERS
+  IN THE         *      FIRST PASS. USED FOR BLOCK # FOR VARIABLE
+ S IN THE SECOND PASS.           *      THIS BYTE WILL BE SET TO 
+ ZERO PRIOR TO THE PROGRAM EXECUTION.            *      NEST OR B
+ LOCK # WILL BE PLACED IN THE INSTRUCTIONS WHERE REQUIRED.       
+ *                                                               
+                 *   D= USED FOR THE FOLLOWING:                  
+                                 
+block 71: 800 bytes at time 5.75701248, ok
+ *      STATEMENT LABEL-OFFSET FROM CDBASE                       
+                 *      PROCEDURE LABEL-OFFSET FROM CDBASE       
+                                 *      VARIABLE-       OFFSET FR
+ OM VSTAK DISPLAY POINTER TO LOCATE              *               
+        THE VARIABLE OR DOPE VECTOR.                             
+ *      BUILT-IN FUNCTION-OFFSET FROM BIFBASE.                   
+                 *                                               
+                                 *   E= ELEMENT SIZE(IN BYTES). I
+ F A SCALAR CHARACTER STRING THEN F=0            *               
+                                                                 
+ *   F= NUMBER OF DIMENSIONS FOR AN ARRAY. ZERO FOR A SCALAR     
+                 *      USED FOR NEST COUNT FOR STATEMENT-LABELS 
+ SO THAT SECOND                  
+block 72: 800 bytes at time 5.78954624, ok
+ *      PASS CAN CHECK FOR ILLEGAL TRANSFERS INTO BLOCKS OR DO GR
+ OUPS            *                                               
+                                 *   G= USED FOR LABEL CHAINING P
+ OINTERS FOR PROCEDURE AND STATEMENT             *      LABEL TES
+ TS FOR MULTIPLE CLOSURE IN THE FIRST PASS.                      
+ *                                                               
+                 *                                               
+                                 *                               
+                                                 *               
+                                                                 
+ *                                                               
+                 * 0 ENTRY IN IDENTIFIER FOR EACH BLOCK          
+                                 
+block 73: 800 bytes at time 5.82170112, ok
+ *                                                               
+                 *             |-------|-------|                 
+                                 *   FORMAT:   |   A   |   B   | 
+      SIXTEEN-BYTE ENTRIES                       *             |-
+ --------------|                                                 
+ *             |       C       |                                 
+                 *             |---------------|                 
+                                 *             |       D       | 
+                                                 *             |-
+ --------------|                                                 
+ *             |       E       |                                 
+                 *             |---------------|                 
+                                 
+block 74: 800 bytes at time 5.85354368, ok
+ *             |       F       |                                 
+                 *             |---------------|                 
+                                 *             |       G       | 
+                                                 *             |-
+ --------------|                                                 
+ *             |       H       |                                 
+                 *             |---------------|                 
+                                 *             |               | 
+                                                 *             |-
+ --------------|                                                 
+ *                                                               
+                 *   A= SPECIFIES IF THE BLOCK IS A PROCEDURE (0)
+  OR BEGIN BLOCK (1)             
+block 75: 800 bytes at time 5.88531456, ok
+ *                                                               
+                 *   B= INDICATES THE NUMBER OF PARAMETERS FOR PR
+ OCEDURE BLOCKS                  *                               
+                                                 *   C= BLOCK LEV
+ EL                                                              
+ *                                                               
+                 *   D= BLOCK NUMBER                             
+                                 *                               
+                                                 *   E= MOTHER BL
+ OCK NUMBER                                                      
+ *                                                               
+                 *   F= PTR TO BLKTBL ENTRY FOR FIRST PASS       
+                                 
+block 76: 800 bytes at time 5.91723008, ok
+ *      BECOMES THE BYTE COUNT OF INITIAL VSTACK ALLOCATION DURIN
+ G               *      SCOPE RESOLUTION AND ASSIGNMENT.         
+                                 *                               
+                                                 *   G= PROLOGUE 
+ ENTRANCE POINT USED IN FIRST PASS                               
+ *                                                               
+                 *   H= PROLOGUE RETURN POINT USED IN FIRST PASS 
+                                 *      BECOMES THE NUMBER OF ENT
+ RIES IN THE BLOCK SEGMENT                       *               
+                                                                 
+ *                                                               
+                 *   TEMP$ID (SAME FORMATS AS IDENTIFIER)        
+                                 
+block 77: 800 bytes at time 5.94942080, ok
+ *                                                               
+                 *                                               
+                                 *                               
+                                                 * TEMP$CODE STAC
+ K                                                               
+ *                                                               
+                 *   CONTAINS CODE WHICH MUST BE REORDERED IN THE
+  CODE STACK.  THE CODE          *   STACK IS RESERVED, AND WHEN 
+ THE CODE IS GENERATED, IT IS COPIED TO          *   TEMP$CODE, A
+ ND THE CODE STACK IS RELEASED.  AT THE APPROPRIATE              
+ *   TIME, THE CODE IN TEMP$CODE IS COPIED BACK TO THE CODE STACK
+ .               *                                               
+                                 
+block 78: 800 bytes at time 5.98173184, ok
+ *   FORMAT:  SAME AS CODE STACK                                 
+                 *                                               
+                                 *                               
+                                                 *               
+                                                                 
+ *                                                               
+                 *                                               
+                                 * BINARY$CONST STACK            
+                                                 *               
+                                                                 
+ *                                                               
+                 *   CONTAINS ALL OF THE INTEGER CONSTANTS USED I
+ N THE PROGRAM WHICH             
+block 79: 800 bytes at time 6.01401472, ok
+ *   HAVE A VALUE LESS THAT 2**31. THE FIRST IS INITIALIZED TO TH
+ E               *   VALUE OF 1 AND THE SECOND ENTRY TO THE ASTER
+ ISK VALUE, X'FFFF'.                           |---------------| 
+                                                 *   FORMAT:   | 
+               |        FOUR-BYTE ENTRIES                        
+               |---------------|                                 
+                 *             |               |                 
+                                               |---------------| 
+                                                 *               
+                                                                 
+ *                                                               
+                 *                                               
+                                 
+block 80: 800 bytes at time 6.04633088, ok
+ *                                                               
+                 *                                               
+                                 * FLOAT$SINGLE STACK            
+                                                 *               
+                                                                 
+ *   CONTAINS ALL OF THE NON-INTEGER OR FLOATING-POINT CONSTANTS 
+ USED            *   IN THE PROGRAM WHICH CAN BE CONTAINED IN A S
+ INGLE-PRECISION FORM.           *   THE VALUES ARE STORED IN NOR
+ MALIZED FORM.                                   *             |-
+ --------------|                                                 
+ *   FORMAT:   |               |        FOUR-BYTE ENTRIES        
+                 *             |---------------|                 
+                                 
+block 81: 800 bytes at time 6.07825024, ok
+ *             |               |                                 
+                 *             |---------------|                 
+                                 *                               
+                                                 *               
+                                                                 
+ *                                                               
+                 *                                               
+                                 *                               
+                                                 * FLOAT$DOUBLE S
+ TACK                                                            
+ *                                                               
+                 *   CONTAINS ALL OF THE NON-INTEGER OR FLOATING-
+ POINT CONSTANTS USED IN         
+block 82: 800 bytes at time 6.11052160, ok
+ *   THE PROGRAM WHICH REQUIRE DOUBLE-PRECISION HEXADECIMAL FORMA
+ T.              *   THE VALUES ARE STORED IN NORMALIZED FORM.   
+                                 *                               
+                                                 *             |-
+ --------------|                                                 
+ *   FORMAT:   |               |        EIGHT-BYTE ENTRIES       
+                               |---------------|                 
+                                 *             |               | 
+                                                               |-
+ --------------|                                                 
+ *             |               |                                 
+                               |---------------|                 
+                                 
+block 83: 800 bytes at time 6.14269184, ok
+ *             |               |                                 
+                               |---------------|                 
+                                 *                               
+                                                 *   GLABELS STAC
+ K                                                               
+ *     USED FOR COLLECTING THE GENERATED LABEL OFFSETS FROM CDBAS
+ E               *     DURING THE FIRST PASS. THE SECOND PASS PLA
+ CES THESE                       *     OFFSETS IN THE INSTRUCTION
+ S.                                              *               
+                                                                 
+               |---------------|                                 
+                 *   FORMAT:   |               |        TWO-BYTE 
+ ENTRIES                         
+block 84: 800 bytes at time 6.17452032, ok
+               |---------------|                                 
+                 *                                               
+                                 *                               
+                                                 *               
+                                                                 
+ ****************************************************************
+ *******         *                                               
+                                 *        EXECUTION-TIME REPRESEN
+ TATION OF VARIABLES                             *               
+                                                                 
+ ****************************************************************
+ ****            *                                               
+                                 
+block 85: 800 bytes at time 6.20668416, ok
+ *                                                               
+                 *             THE BASIC PUSH-DOWN STACK IN THE E
+ -MACHINE IS THE 'DSTK'          *        ('DYNAMIC' STACK), WHIC
+ H CONTAINS, PRIMARILY, POINTERS TO              *        VARIABL
+ ES AND EXPRESSIONS USED IN THE INTERPRETATION OF THE            
+ *        POLISH EXPRESSIONS.  THE FORMAT OF THE POINTER IS      
+                 *                                               
+                                 *        |-----------------|    
+                                                 *        |TYPE| 
+      --->  |                                                    
+ *        |-----------------|                                    
+                 *                                               
+                                 
+block 86: 800 bytes at time 6.23862656, ok
+ *        WHERE 'TYPE' DESCRIBES THE ATTRIBUTES OF THE VARIABLE O
+ R               *        EXPRESSION AND '--->' IS AN ABSOLUTE AD
+ DRESS.                          *                               
+                                                 *               
+                                                                 
+ *             FOR SCALARS WHICH ARE NOT STRINGS (I.E. FLOAT DOUB
+ LE              *        OR FLOAT SINGLE), THE ADDRESS IS THAT O
+ F THE NUMERIC VALUE.            *                               
+                                                 *               
+                                                                 
+ *             FOR STRINGS AND ARRAYS, THE ADDRESS IS THAT OF A  
+                 *        CONTROL BLOCK CALLED A 'DOPE VECTOR'.  
+ THE FORMATS OF THE              
+block 87: 800 bytes at time 6.27050496, ok
+ *        TWO TYPES OF DOPE VECTORS ARE GIVEN BELOW:             
+                 *                                               
+                                 *                               
+                                                 *               
+                                                                 
+ *                                                               
+                 *                                               
+                                 *  SCALAR CHARACTER STRING DOPE 
+ VECTOR                                          *               
+                                                                 
+ *                                                               
+                 *        <-----4 BYTES----->                    
+                                 
+block 88: 800 bytes at time 6.30287616, ok
+ *                                                               
+                 *        |-----------------|   ABS. ADDR. = ABSO
+ LUTE ADDRESS OF FIRST           *        |    ABS. ADDR.   |    
+             CHARACTER.                          *        |------
+ -----------|   M.L. = MAXIMUM LENGTH OF STRING                  
+ *        |  M.L.  |  C.L.  |                                    
+                 *        |-----------------|   C.L. = CURRENT LE
+ NGTH OF STRING                  *                               
+                                                 *               
+                                                                 
+ *                                                               
+                 *                                               
+                                 
+block 89: 800 bytes at time 6.33472896, ok
+ *  ARRAY DOPE VECTOR                                            
+                 *                                               
+                                 *                               
+                                                 *        <-----4
+  BYTES----->                                                    
+ *                                                               
+                 *        |-----------------|   N = NUMBER OF SUB
+ SCRIPTS                         *        | N | VIRT. ORIG. |    
+                                                 *        |------
+ -----------|   VIRTUAL ORIGIN = ABSOLUTE ADDRESS OF THE ELEMENT 
+ *        |     MULT(1)     |                    ZERO-SUBSCRIPT E
+ LEMENT.         *        |-----------------|                    
+                                 
+block 90: 800 bytes at time 6.36661504, ok
+ *        |  UB(1) |  LB(1) |   MULT(I) = MULTIPLIER FOR THE ITH 
+ SUBSCRP         *        |-----------------|                    
+                                 *        |        .        |   U
+ B(I) = UPPER BOUND   "   "   "     "            *               
+   .                                                             
+ *        |        .        |   LB(I) = LOWER BOUND   "   "   "  
+    "            *        |-----------------|                    
+                                 *        |     MULT(I)     |    
+                                                 *        |------
+ -----------|                                                    
+ *        |  UB(N) |  LB(N) |                                    
+                 *        |-----------------| |                  
+                                 
+block 91: 800 bytes at time 6.39868672, ok
+ *        .  M.L.  |  C.L.  . |--(ONLY FOR CHARACTER STRING ARRAY
+ S)              *        ................... |                  
+                                 *                               
+                                                 *               
+                                                                 
+ *                                                               
+                 *             FOR LABEL VARIABLES AND LABEL CONS
+ TANTS, THE DSTK                 *        ELEMENT POINTS TO A FUL
+ LWORD IN THE FOLLOWING FORMAT:                  *               
+                                                                 
+ *        |-----------------|                                    
+                 *        |NEST| ID | OFFSET|                    
+                                 
+block 92: 800 bytes at time 6.43071488, ok
+ *        |-----------------|                                    
+                 *                                               
+                                 *  WHERE 'NEST' IS THE NEST LEVE
+ L OF THE LABEL,                                 *        'ID' IS
+  AN IDENTIFYING BYTE (CURRENTLY X'80'),                         
+ *    AND 'OFFSET' IS THE OFFSET FROM THE BEGINNING OF THE CODEST
+ ACK OF          *        THE STATEMENT PREFIXED BY THE LABEL.   
+                                 *                               
+                                                 *               
+                                                                 
+ *                                                               
+                 ************************************************
+ ***********************         
+block 93: 800 bytes at time 6.46253184, ok
+ *                                                               
+                 *   DSTK CONTROL ELEMENT                        
+                                 *                               
+                                                 *        THIS VA
+ RIABLE-LENGTH CONTROL ELEMENT IS PUT ON THE DSTK BY             
+ *        THE E-MACHINE WHENEVER IT INTERPRETS ANY OF THE FOLLOWI
+ NG              *        OPCODES:  FNC, LNK, BEG, GSB, DOI, DOW 
+                                 *        IT SERVES AS A REPOSITO
+ RY FOR VARIOUS INFORMATION WHICH MUST           *        BE SAVE
+ D FOR THE DURATION OF THE LOOP (DOI AND DOW) OR THE             
+ *        INVOCATION (FNC, LNK, BEG, OR GSB).  SINCE THE DSTK IS 
+ A PUSH-         *        DOWN STACK, RECURSION IS HANDLED WITHOU
+ T DIFFICULTY.                   
+block 94: 800 bytes at time 6.49439360, ok
+ *                                                               
+                 *                                               
+                                 *  OFFSET      FORMAT         AP
+ PLICABILITY                                     *               
+                                                                 
+ *        |-----------------|                                    
+                 *        |TYPE|  -->ARG1   |  PRC(FNC,LNK)      
+                                 *        |-----------------|    
+                                                 *        |      
+    .       |                                                    
+ *                  .                                            
+                 *        |         .       |                    
+                                 
+block 95: 800 bytes at time 6.52611584, ok
+ *        |-----------------|                                    
+                 *   --->0|TYPE|  -->ARGN   |  PRC(FNC,LNK)      
+                                 *        |-----------------|    
+                                                 *       4|NEST| 
+ VPERM CHAIN|  PRC(FNC,LNK),BEG,GSB,DO(DOI,DOW)                  
+ *        |-----------------|                                    
+                 *       8|CODE| DSTK CHAIN |  PRC(FNC,LNK),BEG,G
+ SB,DO(DOI,DOW)                  *        |-----------------|    
+                                                 *      12|    | 
+  RET. ADDR.|  PRC(FNC,LNK),BEG,GSB                              
+ *        |-----------------|                                    
+                 *      16| BLK|   VSTK BASE|  PRC(FNC,LNK),BEG  
+                                 
+block 96: 800 bytes at time 6.55808640, ok
+ *        |-----------------|                                    
+                 *      20|#ARG|STMT| -->ID |  PRC(FNC,LNK)      
+                                 *        |-----------------|    
+                                                 *      24|TYPE| 
+ -->RET.VAL.|  FNC                                               
+ *        |-----------------|                                    
+                 *                                               
+                                 *        EXPLANATION OF FIELDS: 
+                                                 *               
+                                                                 
+ *        TYPE:  DESCRIBES THE TYPE OF A VARIABLE (SEE 'IDSTK' TY
+ PE              *              CODES LISTED ELSEWHERE).         
+                                 
+block 97: 800 bytes at time 6.59026176, ok
+ *                                                               
+                 *        -->ARGN:  AN ABSOLUTE ADDRESS WHICH POI
+ NTS TO THE N'TH                 *              ARGUMENT WHICH WA
+ S PASSED IN THE CALL STATEMENT OR               *              F
+ UNCTION REFERENCE.                                              
+ *                                                               
+                 *        NEST:  THE NEST LEVEL OF THE CALLING BL
+ OCK.                            *                               
+                                                 *        VPERM C
+ HAIN:  AN ABSOLUTE ADDRESS WHICH REPRESENTS THE                 
+ *              HIGHEST LEVEL OF VSTK ALLOCATION WHICH MUST BE   
+                 *              MAINTAINED AFTER THE LOOP OR INVO
+ CATION TERMINATES.              
+block 98: 800 bytes at time 6.62235648, ok
+ *                                                               
+                 *        CODE: A NUMBER WHICH IDENTIFIES THE TYP
+ E OF DSTK CONTROL               *              ELEMENT THIS IS: 
+                                                 *               
+                                                                 
+ *              CODE        TYPE                                 
+                 *                1      DOW (DO-WHILE)          
+                                 *                2      DOI (DO-
+ ITERATIVE)                                      *               
+  4      FNC (FUNCTION REFERENCE)                                
+ *                8      LNK (CALL STATEMENT)                    
+                 *               16      BEG (BEGIN BLOCK)       
+                                 
+block 99: 800 bytes at time 6.65447168, ok
+ *               32      GSB (GOSUB INVOCATION)                  
+                 *                                               
+                                 *        DSTK CHAIN:  A POINTER 
+ TO THE 0-OFFSET FIELD (--->) OF THE             *              P
+ REVIOUS DSTK CONTROL ELEMENT.                                   
+ *                                                               
+                 *        RET. ADDR.:  THE ABSOLUTE ADDRESS OF TH
+ E OPCODE TO BE                  *              INTERPRETED AFTER
+  THE LOOP OR INVOCATION TERMINATES.             *               
+                                                                 
+ *        BLK:  THE BLOCK NUMBER OF THE CALLING BLOCK.           
+                 *                                               
+                                 
+block 100: 800 bytes at time 6.68646528, ok
+ *        VSTK BASE:  THE BASE OF THE VSTK SECTION FOR THE CALLIN
+ G               *              BLOCK. (THIS IS REQUIRED FOR RECU
+ RSIVE INVOCATIONS.)             *                               
+                                                 *        #ARG:  
+ THE NUMBER OF ARGUMENTS PASSED TO THE PROCEDURE.                
+ *                                                               
+                 *        STMT:  THE NUMBER OF THE STATEMENT WHIC
+ H INVOKED THE PROCEDURE         *              (USED FOR TRACEBA
+ CK).                                            *               
+                                                                 
+ *        -->ID:  THE ADDRESS OF THE ID ENTRY FOR THE INVOKED PRO
+ CEDURE          *              RELATIVE TO THE BEGINNING OF THE 
+ ID STACK. (ALSO USED            
+block 101: 800 bytes at time 6.71871360, ok
+ *              FOR TRACEBACK).                                  
+                 *                                               
+                                 *        RET.VAL.:  THE ABSOLUTE
+  ADDRESS OF THE AREA ALLOCATED FOR THE          *              R
+ ETURNED VALUE.                                                  
+ *                                                               
+                 *                                               
+                                 *                               
+                                                 *        IN THE 
+ CASE OF DOI OR DOW, ALTERNATE FIELDS APPEAR AT OFFSET           
+ * 12 IN THE DSTK CONTROL ELEMENT:                               
+                 *                                               
+                                 
+block 102: 800 bytes at time 6.75046272, ok
+ * DOW: 12|-----------------|                                    
+                 *        |       --->GL0   |                    
+                                 *        |-----------------|    
+                                                 *        |      
+  --->GL1   |                                                    
+ *        |-----------------|                                    
+                 *                                               
+                                 *                               
+                                                 * DOI: 12|------
+ -----------|                                                    
+ *        |TYPE| -->CTRL VAR|                                    
+                 *        |-----------------|                    
+                                 
+block 103: 800 bytes at time 6.78241792, ok
+ *        |TYPE|   -->E1    |                                    
+                 *        |-----------------|                    
+                                 *        |TYPE|   -->E2    |    
+                                                 *        |------
+ -----------|                                                    
+ *        |TYPE|   -->E3    |                                    
+                 *        |-----------------|                    
+                                 *        |       --->GL0   |    
+                                                 *        |------
+ -----------|                                                    
+ *        |       --->GL1   |                                    
+                 *        |-----------------|                    
+                                 
+block 104: 800 bytes at time 6.81476992, ok
+ *                                                               
+                 *        --->GL0:  THE ABSOLUTE ADDRESS OF THE I
+ DO TO BE EXECUTED WHEN          *              THE DO-LOOP TERMI
+ NATES NORMALLY.                                 *               
+                                                                 
+ *        --->GL1:  THE ABSOLUTE ADDRESS OF THE IDO TO WHICH CONR
+ OL              *              RETURNS IN ORDER TO RE-EXECUTE TH
+ E BODY OF THE LOOP.             *                               
+                                                 *        -->CTRL
+  VAR:  THE ABSOLUTE ADDRESS OF THE CONTROL VARIABLE.            
+ *                                                               
+                 *        -->E1:  THE ABSOLUTE ADDRESS OF THE INI
+ TIAL VALUE OF THE               
+block 105: 800 bytes at time 6.84696320, ok
+ *              CONTROL VARIABLE.                                
+                 *                                               
+                                 *        -->E2:  THE ABSOLUTE AD
+ DRESS OF THE LIMIT OF THE CONTROL               *              V
+ ARIABLE.                                                        
+ *                                                               
+                 *        -->E3:  THE ABSOLUTE ADDRESS OF THE INC
+ REMENT.                         *                               
+                                                 ****************
+ *******************************************************         
+ *                                                               
+                 *                                               
+                                 
+block 106: 800 bytes at time 6.87897856, ok
+ *        BUILT-IN-FUNCTIONS  AND  BUILT-IN-PROCEDURES           
+                 *                                               
+                                 *                               
+                                                 *             TH
+ E BUILT-IN-FUNCTIONS (E.G. ABS, SIN) AND THE BUILT-             
+ *        -IN-PROCEDURES (E.G. TRACE) ARE DIVIDED, FOR CONVENIENC
+ E IN            *        INTERPRETATION, INTO TWO GROUPS:       
+                                 *                               
+                                                 *               
+                                                                 
+ *  I.    MATHEMATICAL FUNCTIONS:  THESE ARE FUNCTIONS WHICH TAKE
+  A              *        SINGLE FLOATING-POINT ARGUMENTS AND RET
+ URN A SINGLE FLOATING-          
+block 107: 800 bytes at time 6.91076352, ok
+ *        POINT RESULT (E.G. SIN, TAN, EXP).  AT THE END OF CODE 
+                 *        RESOLUTION, THE FSB CREATED BY THE LOAD
+ ER HAS BEEN CHANGED TO:         *                               
+                                                 *              |
+ BIF |   0|             BIF = X'36'                              
+ *          --->|   0|   N|             N = ROUTINE NUMBER       
+                 *              |   0|   M|             M = NO. O
+ F ARGUMENTS (1)                 *                               
+                                                 *        THE ROU
+ TINE NUMBERS BEGIN WITH 0 AND ARE INCREMENTED BY 2 FOR          
+ *        THE VARIOUS MATHEMATICAL FUNCTIONS.                    
+                 *                                               
+                                 
+block 108: 800 bytes at time 6.94284800, ok
+ *        THE OPERAND BYTE (FIRST 0) IS USED DURING EXECUTION TO 
+                 *        INDICATE THE TYPE OF ARGUMENT SUPPLIED.
+   SIMILARLY, AFTER              *        THE FIRST EXECUTION OF 
+ THE FUNCTION, THE SECOND HALFWORD               *        (--->) 
+ IS CHANGED TO CONTAIN THE OFFSET OF THE REQUESTED               
+ *        ROUTINE FROM THE BEGINNING OF THE MATHEMATICAL FUNCTION
+  CSECT.         *        THIS EXPEDITES FUTURE INTERPRETATIONS O
+ F THE OPCODE.                   *                               
+                                                 *               
+                                                                 
+ *  II.   PRIMITIVE FUNCTIONS:  THESE ARE ALL THE FUNCTIONS WHICH
+  DO NOT         *        SATISFY THE CONDITIONS OF THE FIRST TYP
+ E (E.G. SUBSTR, MAX,            
+block 109: 800 bytes at time 6.97498112, ok
+ *        SUM).  THEY ARE EACH ASSIGNED A UNIQUE OPCODE FOR INTER
+ PRETA-          *        TION BY THE E-MACHINE.                 
+                                 *                               
+                                                 *  EXAMPLE:    |
+  ABS|   0|             ABS = X'8C'                              
+ *              |    | ABS|                                      
+                 *              |   0|   1|             NUMBER OF
+  ARGUMENTS                      *                               
+                                                 *        IN THE 
+ CASE OF BUILT-IN-FUNCTIONS WHICH REQUIRE A FIXED NUMBER         
+ *        OF ARGUMENTS, SECOND-PASS CODE RESOLUTION VERIFIES THAT
+  THE            *        CORRECT NUMBER HAS BEEN SUPPLIED.  FOR 
+ FUNCTIONS WHICH MAY             
+block 110: 320 bytes at time 6.99485312, ok
+ *        ACCEPT A VARYING NUMBER OF ARGUMENTS (E.G. SUBSTR, MAS)
+ , THE           *        E-MACHINE CHECKS FOR LEGALITY.         
+                                 *                               
+                                                 *               
+                                                                 
+tape mark at time 7.06232448
+tape mark at time 7.15794304
+tape mark at time 7.25391488
+block 111: 800 bytes at time 7.28617472, ok
+ PLAG     TITLE 'PLAGO/MONITOR COMMUNICATIONS TABLE'             
+                 PLAGO    CSECT                                  
+                                 ********************************
+ ***************************************         *               
+                                                                 
+ *        PLAGO/MONITOR TRANSFER VECTOR                          
+                 *                                               
+                                 ********************************
+ ***************************************          SPACE 2        
+                                                                 
+ *                                                               
+                 * THIS CSECT CONSISTS OF ADDRESS CONSTANTS WHICH
+  ARE NEEDED BY THE              
+block 112: 800 bytes at time 7.31811712, ok
+ * MONITOR.  THE CSECT NAME ('PLAGO') MUST BE THE ENTRY POINT OF 
+ THE             * LOAD MODULE (ALSO 'PLAGO') WHICH IS LOADED DYN
+ AMICALLY BY THE                 * MONITOR.                      
+                                                 *               
+                                                                 
+  SPACE 2                                                        
+                          DC    V(LOADER)               COMPILER 
+ ENTRY POINT                              DC    V(EMACHINE)      
+        EXECUTION INTERPRETER ENTRY PT                    DC    V
+ (TCOM)                 TMACHINE COMMUNICATIONS AREA             
+          DC    V(ECOM)                 EMACHINE COMMUNICATIONS A
+ REA                      DC    V(ETRAP)                EMACHINE 
+ INTERRUPT PROCESSOR             
+block 113: 160 bytes at time 7.33456768, ok
+          DC    V(ESTMT)                POINTER TO CURRENT STMT N
+ O.                       END   PLAGO                            
+                                 
+tape mark at time 7.40187648
+tape mark at time 7.49793024
+tape mark at time 7.59360256
+block 114: 800 bytes at time 7.62564480, ok
+  IDOSEM: PROCEDURE OPTIONS (MAIN);                              
+         00000010      DECLARE PUNCH FILE OUTPUT RECORD ENVIRONME
+ NT (CONSECUTIVE F(80)); 00000020      DECLARE STKGRT(20) CHAR(8)
+ , STKIN(20) CHAR(8),STKLEN(20) CHAR(8); 00000030         DECLARE
+  SOURCE CHAR(80),OPCODE CHAR(3),OPERANDS(8) CHAR(20),   00000040
+          OPLENGTH(8) FIXED BINARY;                              
+         00000050      DECLARE GLABELS(0:127) CHAR(8), NLABELS FI
+ XED DECIMAL(3)          00000060      INITIAL(0), GLOBNO CHAR(4)
+                                         00000070      INITIAL('G
+ 000'),STKNAM(20) CHAR(8),NSTKS INITIAL(0), IB FIXED     00000080
+       DECIMAL(3), IBB FIXED DECIMAL(3), IBG FIXED DECIMAL(3), IS
+ TKS     00000090      FIXED DECIMAL(3), IDES FIXED DECIMAL(3), I
+ I FIXED DECIMAL(3);     00000100
+block 115: 800 bytes at time 7.65751296, ok
+       DECLARE BOUNDRY FIXED BINARY INITIAL(0),                  
+         00000110      AL1 CHAR(19) INITIAL('         DC    AL1('
+ ),                      00000120      CL1 CHAR(19) INITIAL('    
+      DC    CL1'''),                     00000130      EQU CHAR(1
+ 9) INITIAL('         EQU       '),                      00000140
+       OBJECT CHAR(80),LABEL CHAR(8)                             
+         00000150      INITIAL('        '), CGLOB CHAR(6);       
+                         00000160      N=62;      ND1D2=30;      
+                                         00000170      ON ENDFILE
+ (SYSIN) GOTO LSTCRD;                                    00000180
+  BEGIN;                                                         
+         00000190      XX: FORMAT(SKIP,A(80));                   
+                         00000200
+block 116: 800 bytes at time 7.68988544, ok
+       DECLARE IDOS(N) CHAR(3), OPER(N) LABEL, OTYPE(17) LABEL   
+         00000210      INITIAL(NOP,DC,DCL,LOC,GLOB,LOG,IC,ISL,STL
+ ,STR,LLIST,SN,SNL,D1D2, 00000220      SND1D2,SND1D2L,SNSN),D1D2T
+ (ND1D2)  CHAR(8), ND1D2T(ND1D2) CHAR(8);00000230 FSTCD: GET EDIT
+ (SOURCE)(A(80));                                        00000240
+       IF SUBSTR(SOURCE,1,1)='*' THEN DO;                        
+         00000250      OBJECT=SOURCE; CALL OLINE;                
+                         00000260      GOTO FSTCD; END;          
+                                         00000270      SUBSTR(SOU
+ RCE,1,1)='*';                                           00000280
+       OBJECT=SOURCE; CALL OLINE;                                
+         00000290      ISCAN=2;                                  
+                         00000300
+block 117: 800 bytes at time 7.72161536, ok
+       I,II=1;                                                   
+         00000310 IDOS(1)='ADD';OPER(1)=OTYPE(2);                
+                         00000320 IDOS(2)='AFE';OPER(2)=OTYPE(15)
+ ;                                       00000330 IDOS(3)='ARK';O
+ PER(3)=OTYPE(14);                                       00000340
+  IDOS(4)='ARP';OPER(4)=OTYPE(14);                               
+         00000350 IDOS(5)='ASK';OPER(5)=OTYPE(2);                
+                         00000360 IDOS(6)='ASP';OPER(6)=OTYPE(2);
+                                         00000370 IDOS(7)='BDW';O
+ PER(7)=OTYPE(4);                                        00000380
+  IDOS(8)='BEQ';OPER(8)=OTYPE(3);                                
+         00000390 IDOS(9)='BEZ';OPER(9)=OTYPE(4);                
+                         00000400
+block 118: 800 bytes at time 7.75387904, ok
+  IDOS(10)='BGE';OPER(10)=OTYPE(3);                              
+         00000410 IDOS(11)='BLE';OPER(11)=OTYPE(3);              
+                         00000420 IDOS(12)='BNE';OPER(12)=OTYPE(3
+ );                                      00000430 IDOS(13)='BNZ';
+ OPER(13)=OTYPE(3);                                      00000440
+  IDOS(14)='BOW';OPER(14)=OTYPE(4);                              
+         00000450 IDOS(15)='BSB';OPER(15)=OTYPE(5);              
+                         00000460 IDOS(16)='BUN';OPER(16)=OTYPE(5
+ );                                      00000470 IDOS(17)='BUW';
+ OPER(17)=OTYPE(11);                                     00000480
+  IDOS(18)='BUZ';OPER(18)=OTYPE(4);                              
+         00000490 IDOS(19)='BZE';OPER(19)=OTYPE(4);              
+                         00000500
+block 119: 800 bytes at time 7.78597248, ok
+  IDOS(20)='CLA';OPER(20)=OTYPE(2);                              
+         00000510 IDOS(21)='CNT';OPER(21)=OTYPE(12);             
+                         00000520 IDOS(22)='CON';OPER(22)=OTYPE(4
+ );                                      00000530 IDOS(23)='COP';
+ OPER(23)=OTYPE(17);                                     00000540
+  IDOS(24)='CSF';OPER(24)=OTYPE(8);                              
+         00000550 IDOS(25)='CST';OPER(25)=OTYPE(8);              
+                         00000560 IDOS(26)='DPS';OPER(26)=OTYPE(1
+ 2);                                     00000570 IDOS(27)='EAW';
+ OPER(27)=OTYPE(7);                                      00000580
+  IDOS(28)='FET';OPER(28)=OTYPE(2);                              
+         00000590 IDOS(29)='FRK';OPER(29)=OTYPE(14);             
+                         00000600
+block 120: 800 bytes at time 7.81820544, ok
+  IDOS(30)='FRP';OPER(30)=OTYPE(14);                             
+         00000610 IDOS(31)='IDS';OPER(31)=OTYPE(4);              
+                         00000620      IDOS(32)='INP';OPER(32)=OT
+ YPE(2);                                 00000630      IDOS(33)='
+ INS';OPER(33)=OTYPE(2);                                 00000640
+       IDOS(34)='MPY';OPER(34)=OTYPE(2);                         
+         00000650      IDOS(35)='MSG';OPER(35)=OTYPE(10);        
+                         00000660      IDOS(36)='NEG';OPER(36)=OT
+ YPE(1);                                 00000670      IDOS(37)='
+ PNE';OPER(37)=OTYPE(12);                                00000680
+       IDOS(38)='POW';OPER(38)=OTYPE(7);                         
+         00000690      IDOS(39)='PRC';OPER(39)=OTYPE(2);         
+                         00000700
+block 121: 800 bytes at time 7.85041408, ok
+       IDOS(40)='QSF';OPER(40)=OTYPE(9);                         
+         00000710      IDOS(41)='QST';OPER(41)=OTYPE(9);         
+                         00000720      IDOS(42)='REL';OPER(42)=OT
+ YPE(12);                                00000730      IDOS(43)='
+ RET';OPER(43)=OTYPE(1);                                 00000740
+       IDOS(44)='RSS';OPER(44)=OTYPE(1);                         
+         00000750      IDOS(45)='RSV';OPER(45)=OTYPE(12);        
+                         00000760      IDOS(46)='SER';OPER(46)=OT
+ YPE(7);                                 00000770      IDOS(47)='
+ SIN';OPER(47)=OTYPE(2);                                 00000780
+       IDOS(48)='SKS';OPER(48)=OTYPE(1);                         
+         00000790      IDOS(49)='SRS';OPER(49)=OTYPE(16);        
+                         00000800
+block 122: 800 bytes at time 7.88249344, ok
+       IDOS(50)='SUB';OPER(50)=OTYPE(2);                         
+         00000810      IDOS(51)='SWT';OPER(51)=OTYPE(2);         
+                         00000820      IDOS(52)='TLY';OPER(52)=OT
+ YPE(2);                                 00000830      IDOS(53)='
+ TOF';OPER(53)=OTYPE(1);                                 00000840
+       IDOS(54)='TON';OPER(54)=OTYPE(1);                         
+         00000850      IDOS(55)='XIT';OPER(55)=OTYPE(7);         
+                         00000860      IDOS(56)='ZFE';OPER(56)=OT
+ YPE(15);                                00000870      IDOS(57)='
+ ZOE';OPER(57)=OTYPE(15);                                00000880
+       IDOS(58)='BGN';OPER(58)=OTYPE(5);                         
+         00000890      IDOS(59)='CGF';OPER(59)=OTYPE(8);         
+                         00000900
+block 123: 800 bytes at time 7.91428096, ok
+       IDOS(60)='CGT';OPER(60)=OTYPE(8);                         
+         00000910      IDOS(61)='QGF';OPER(61)=OTYPE(9);         
+                         00000920      IDOS(62)='QGT';OPER(62)=OT
+ YPE(9);                                 00000930      SUBSTR(OBJ
+ ECT,1)='COMPLR   CSECT'; CALL OLINE;                    00000940
+       SUBSTR(OBJECT,1)='         ENTRY DATASTRT'; CALL OLINE;   
+         00000950      SUBSTR(OBJECT,1)='         ENTRY GLBSTRT';
+  CALL OLINE;            00000960 PUTID: SUBSTR(OBJECT,1)='ZADD  
+     EQU      0'; CALL OLINE; OBJECT=EQU;00000970 PUTIDO: DO IB=2
+  TO N; SUBSTR(OBJECT,16)='Z'||IDOS(IB-1)||'+2';         00000980
+       SUBSTR(OBJECT,1,4)='Z'||IDOS(IB); CALL OLINE; END PUTIDO; 
+         00000990 NEXTD:CALL SCANIDO;                            
+                         00001000
+block 124: 800 bytes at time 7.94621952, ok
+       IF OPCODE='DES' THEN GOTO DESTAB;                         
+         00001010      ELSE GOTO PROCESS;                        
+                         00001020 DESTAB:D1D2T(II)=OPERANDS(1);  
+                                         00001030      SUBSTR(ND1
+ D2T(II),1)= SUBSTR(OPERANDS(2),1,OPLENGTH(2))||'*16+'|| 00001040
+       SUBSTR(OPERANDS(3),1,OPLENGTH(3))||')'; II=II+1; GOTO NEXT
+ D;      00001050 PROCESS:;                                      
+                         00001060      SUBSTR(OBJECT,1)='GLBSTRT 
+   EQU   *'; CALL OLINE;                 00001070 CHECK:IF OPCODE
+  = 'GLB' THEN GOTO GSECT;                               00001080
+       IF OPCODE = 'CEL' THEN GOTO CELL;                         
+         00001090      IF OPCODE = 'STK' THEN GOTO STK;          
+                         00001100
+block 125: 800 bytes at time 7.97856768, ok
+           IF(OPCODE='CSF'|OPCODE = 'CST'|OPCODE='QST')          
+         00001110      THEN DO;   IF SUBSTR(OPERANDS(2),1,1) ^='$
+ ' THEN                  00001120          SUBSTR(OPCODE,2,1)='G'
+ ;END;                                   00001130          IF OPC
+ ODE='BUN' THEN                                          00001140
+  LSTGCHK: IF SUBSTR(OPERANDS(1),1,1) ^='$' THEN                 
+         00001150          SUBSTR(OPCODE,2,1)='G';               
+                         00001160      OBJECT=AL1;               
+                                         00001170      SUBSTR(OBJ
+ ECT,1,8)=LABEL;                                         00001180
+       LABEL='        ';                                         
+         00001190      SUBSTR(OBJECT,20)='Z'||OPCODE||')';       
+                         00001200
+block 126: 800 bytes at time 8.01071744, ok
+       CALL OLINE;                                               
+         00001210      DO I=1 TO N;                              
+                         00001220      IF OPCODE = IDOS(I) THEN  
+                                         00001230      GOTO OK;  
+                                                         00001240
+       END;                                                      
+         00001250      PUT LIST(' IDO NOT DEFINED');             
+                         00001260 NEXTIDO:CALL SCANIDO;GOTO CHECK
+ ;                                       00001270 OK: GO TO OPER(
+ I) ;                                                    00001280
+  NOP: GOTO NEXTIDO;                                             
+         00001290 DC:OBJECT=AL1;                                 
+                         00001300
+block 127: 800 bytes at time 8.04236032, ok
+       SUBSTR(OBJECT,20)=SUBSTR(OPERANDS(1),1,OPLENGTH(1))||'-DAT
+ BS)';   00001310      CALL OLINE;                               
+                         00001320      GOTO NEXTIDO;             
+                                         00001330 DCL: OBJECT=AL1
+ ;                                                       00001340
+       SUBSTR(OBJECT,20)=SUBSTR(OPERANDS(1),1,OPLENGTH(1))       
+         00001350      ||'-DATBS)';                              
+                         00001360      CALL OLINE;               
+                                         00001370      SUBSTR(OBJ
+ ECT,20)=GLOBNO||'L'||                                   00001380
+       SUBSTR(OPERANDS(2),1,OPLENGTH(2))||'-'||GLOBNO            
+         00001390      ||')';                                    
+                         00001400
+block 128: 800 bytes at time 8.07471616, ok
+       CALL OLINE;                                               
+         00001410      GOTO NEXTIDO;                             
+                         00001420 LOC:GLOB:LOG: OBJECT=AL1;      
+                                         00001430      IF SUBSTR(
+ OPERANDS(1),1,1) ^= '$' THEN GOTO GLOB1;                00001440
+       ELSE DO;                                                  
+         00001450 LOC1: SUBSTR(OBJECT,20)=GLOBNO||'L'||SUBSTR(OPE
+ RANDS(1),1,OPLENGTH(1)) 00001460      ||'-'||GLOBNO||')';       
+                                         00001470      END;      
+                                                         00001480
+       CALL OLINE;                                               
+         00001490      GOTO NEXTIDO;                             
+                         00001500
+block 129: 800 bytes at time 8.10683776, ok
+  GLOB1: DO IBB=1 TO NLABELS; IF SUBSTR(OPERANDS(1),1,8)=GLABELS(
+ IBB)    00001510      THEN GOTO GLOB2; END GLOB1;               
+                         00001520 GLOB3: NLABELS=NLABELS+1; GLABE
+ LS(NLABELS)=OPERANDS(1);                00001530      CGLOB=NLAB
+ ELS;IB=1; GOTO GLOB2A;                                  00001540
+  GLOB2:CGLOB=IBB; IB=1;                                         
+         00001550 GLOB2A: DO WHILE(SUBSTR(CGLOB,IB,1)=' '& IB < 8
+ );IB=IB+1; END GLOB2A;  00001560      IBB=7-IB;                 
+                                         00001570      SUBSTR(OBJ
+ ECT,20)='YG'||SUBSTR(CGLOB,IB,IBB)||'-GLBRTB)';         00001580
+       CALL OLINE; GOTO NEXTIDO;                                 
+         00001590 IC: OBJECT=AL1;                                
+                         00001600
+block 130: 800 bytes at time 8.13879936, ok
+        SUBSTR(OBJECT,20)=SUBSTR(OPERANDS(1),1,OPLENGTH(1))||')';
+         00001610      CALL OLINE;                               
+                         00001620      GOTO NEXTIDO;             
+                                         00001630 ISL:OBJECT=CL1;
+                                                         00001640
+     IF ( SUBSTR(OPERANDS(1),1,1)=''''|SUBSTR(OPERANDS(1),1,1)='&
+ ') THEN 00001650 DBLE: DO; SUBSTR(OPERANDS(1),2,1)=SUBSTR(OPERAN
+ DS(1),1,1);             00001660       OPLENGTH(1)=2; END DBLE; 
+                                         00001670      SUBSTR(OBJ
+ ECT,20)=SUBSTR(OPERANDS(1),1,OPLENGTH(1))||'''';        00001680
+       CALL OLINE;                                               
+         00001690      IF OPERANDS(2)='        ' THEN GOTO NEXTID
+ O;                      00001700
+block 131: 800 bytes at time 8.17078912, ok
+        ELSE DO; OPERANDS(1)=OPERANDS(2); OPLENGTH(1)=OPLENGTH(2)
+ ;       00001710      GO TO LOG; END;                           
+                         00001720 STL:STR: OBJECT=AL1;IBB=OPLENGT
+ H(1)-2; CGLOB=IBB;IB=1;                 00001730      DO WHILE(S
+ UBSTR(CGLOB,IB,1) = ' '); IB=IB+1; END;                 00001740
+       IBB=7-IB;                                                 
+         00001750      SUBSTR(OBJECT,20)=SUBSTR(CGLOB,IB,IBB)||')
+ '; CALL OLINE;          00001760      OBJECT=CL1;               
+                                         00001770      SUBSTR(OBJ
+ ECT,18)=SUBSTR(CGLOB,IB,IBB)||SUBSTR(OPERANDS(1),1,     00001780
+           OPLENGTH(1));                                         
+         00001790      CALL OLINE;                               
+                         00001800
+block 132: 800 bytes at time 8.20302592, ok
+       IF OPERANDS(2)='        ' THEN GOTO NEXTIDO;              
+         00001810      ELSE OPERANDS(1)=OPERANDS(2); OPLENGTH(1)=
+ OPLENGTH(2);            00001820       GOTO LOG;                
+                                         00001830 LLIST: OBJECT =
+  AL1;                                                   00001840
+          DO I=1 TO 8 WHILE(OPERANDS(I) ^= '        ');          
+         00001850      SUBSTR(OBJECT,20)=GLOBNO||'L'||SUBSTR(OPER
+ ANDS(I),1,OPLENGTH(I))||00001860        '-'||GLOBNO||')';       
+                                         00001870      CALL OLINE
+ ;                                                       00001880
+       END;                                                      
+         00001890      GOTO NEXTIDO;                             
+                         00001900
+block 133: 800 bytes at time 8.23526016, ok
+  SN:SNL:OBJECT=AL1;                                             
+         00001910      DO ISTKS=1 TO NSTKS;                      
+                         00001920      IF OPERANDS(1)=STKNAM(ISTK
+ S) THEN GOTO STK1;                      00001930      END; PUT L
+ IST(' STACKNAME MISSING');                              00001940
+  STK1: CGLOB=ISTKS;                                             
+         00001950      IB=1;DO WHILE(SUBSTR(CGLOB,IB,1)=' '); IB=
+ IB+1; END; IBB=7-IB;    00001960      SUBSTR(OBJECT,20)='S'||SUB
+ STR(CGLOB,IB,IBB)||')';                 00001970      CALL OLINE
+ ;                                                       00001980
+       OPERANDS(1)=OPERANDS(2);                                  
+         00001990      IF OPERANDS(1)='        ' THEN GOTO NEXTID
+ O;                      00002000
+block 134: 800 bytes at time 8.26730880, ok
+       ELSE OPLENGTH(1)=OPLENGTH(2);GOTO LOG;                    
+         00002010 SND1D2:SND1D2L: OBJECT=AL1; DO ISTKS=1 TO NSTKS
+ ;                       00002020      IF OPERANDS(1)=STKNAM(ISTK
+ S) THEN GOTO STK2; END; NSTKS=NSTKS+1;  00002030      PUT LIST('
+  STACKNAME MISSING');                                   00002040
+  STK2: CGLOB = ISTKS; IB=1; DO WHILE(SUBSTR(CGLOB,IB,1)=' ');   
+         00002050      IB=IB+1; END; IBB=7-IB;                   
+                         00002060      SUBSTR(OBJECT,20)='S'||SUB
+ STR(CGLOB,IB,IBB)||')';  CALL OLINE;    00002070      OPERANDS(1
+ )=OPERANDS(2);                                          00002080
+  D1D2: DO IDES = 1 TO II;                                       
+         00002090      IF OPERANDS(1)= D1D2T(IDES) THEN GOTO D1D2
+ A; END D1D2;            00002100
+block 135: 800 bytes at time 8.29957632, ok
+        PUT LIST(' DESCRIPTOR MISSING'); GOTO NEXTIDO;           
+         00002110 D1D2A: OBJECT=AL1;                             
+                         00002120      SUBSTR(OBJECT,20)=ND1D2T(I
+ DES); CALL OLINE;                       00002130      OPERANDS(1
+ )=OPERANDS(3); IF OPERANDS(1)='        ' THEN GOTO      00002140
+       NEXTIDO; ELSE OPLENGTH(1)=OPLENGTH(3); GOTO LOG;          
+         00002150 SNSN: OBJECT=AL1; SNCNT=1;                     
+                         00002160 SNSN1: DO ISTKS=1 TO NSTKS; IF 
+ OPERANDS(1) = STKNAM(ISTKS) THEN GOTO   00002170      STK3; END;
+  PUT LIST(' STACKNAME MISSING');                        00002180
+  STK3: CGLOB=ISTKS; IB=1;                                       
+         00002190      DO WHILE(SUBSTR(CGLOB,IB,1)=' '); IB=IB+1;
+  END; IBB=7-IB;         00002200
+block 136: 800 bytes at time 8.33147392, ok
+       SUBSTR(OBJECT,20)='S'||SUBSTR(CGLOB,IB,IBB)||')'; CALL OLI
+ NE;     00002210      SNCNT=SNCNT+1; IF SNCNT <= 2 THEN         
+                         00002220 STK4: DO; OPERANDS(1)=OPERANDS(
+ 2); GOTO SNSN1; END STK4;               00002230      ELSE GOTO 
+ NEXTIDO;                                                00002240
+  STK: NSTKS=NSTKS+1;                                            
+         00002250       STKNAM(NSTKS)=OPERANDS(1);               
+                         00002260      SUBSTR(STKLEN(NSTKS),1)=SU
+ BSTR(OPERANDS(2),1,OPLENGTH(2));        00002270      SUBSTR(STK
+ IN(NSTKS),1)=SUBSTR(OPERANDS(3),1,OPLENGTH(3));         00002280
+       SUBSTR(STKGRT(NSTKS),1)=SUBSTR(OPERANDS(4),1,OPLENGTH(4));
+         00002290      GOTO NEXTIDO;                             
+                         00002300
+block 137: 800 bytes at time 8.36348032, ok
+  CELL: IF BOUNDRY = 0 THEN DO;                                  
+         00002310      SUBSTR(OBJECT,1)='         DS    0D'; CALL
+  OLINE;                 00002320      SUBSTR(OBJECT,1)='DATBS   
+ EQU   *'; CALL OLINE;                   00002330      SUBSTR(OBJ
+ ECT,1)='DATASTRT EQU DATBS'; CALL OLINE; END ;          00002340
+       BOUNDRY=BOUNDRY+1; OBJECT=AL1;                            
+         00002350      SUBSTR(OBJECT,1,OPLENGTH(1))=SUBSTR(OPERAN
+ DS(1),1,OPLENGTH(1));   00002360      SUBSTR(OBJECT,18)='2('||SU
+ BSTR(OPERANDS(2),1,OPLENGTH(2))||')';   00002370      CALL OLINE
+ ;                                                       00002380
+       GOTO NEXTIDO;                                             
+         00002390 GSECT:IB=1; DO IB=1 TO NLABELS; IF OPERANDS(1)=
+ GLABELS(IB) THEN        00002400
+block 138: 800 bytes at time 8.39538688, ok
+  GSECTA: DO; CGLOB=IB; GOTO GSECTB; END GSECTA; END;            
+         00002410      NLABELS = NLABELS+1;                      
+                         00002420      GLABELS(NLABELS)=OPERANDS(
+ 1);                                     00002430      CGLOB=NLAB
+ ELS;                                                    00002440
+  GSECTB: OBJECT=EQU; GLOBNO='G000'; IB=1;                       
+         00002450      DO WHILE(SUBSTR(CGLOB,IB,1)=' ');         
+                         00002460      IB=IB+1; END; IBB=7-IB; IB
+ G=5-IBB;                                00002470      SUBSTR(GLO
+ BNO,IBG,IBB)=SUBSTR(CGLOB,IB,IBB);                      00002480
+       SUBSTR(OBJECT,1,4)=SUBSTR(GLOBNO,1,4);                    
+         00002490      SUBSTR(OBJECT,16)='*';                    
+                         00002500
+block 139: 800 bytes at time 8.42748672, ok
+       CALL OLINE; OBJECT=CL1;                                   
+         00002510      SUBSTR(OBJECT,18)='8'''||SUBSTR(OPERANDS(1
+ ),1,OPLENGTH(1))||''''; 00002520      CALL OLINE; GOTO NEXTIDO; 
+                                         00002530 SCANIDO:PROCEDU
+ RE;                                                     00002540
+       XX: FORMAT(SKIP,A(80));                                   
+         00002550      DO WHILE(SUBSTR(SOURCE,ISCAN,1)  = ' ');  
+                         00002560      CALL SEND;                
+                                         00002570      END;      
+                                                         00002580
+       IF SUBSTR(SOURCE,ISCAN,1) = '$' THEN GOTO BLDLBL;         
+         00002590      ELSE GOTO OPCD;                           
+                         00002600
+block 140: 800 bytes at time 8.45983488, ok
+  BLDLBL: K=1;                                                   
+         00002610 LBL1: DO WHILE(SUBSTR(SOURCE,ISCAN,1) ^=':'&SUB
+ STR(SOURCE,ISCAN,1)^=';'00002620      );                        
+                                         00002630      SUBSTR(OPE
+ RANDS(1),K,1)=SUBSTR(SOURCE,ISCAN,1);                   00002640
+  K=K+1; CALL SEND; END LBL1; K=K-1;                             
+         00002650      LABEL=GLOBNO||'L'||SUBSTR(OPERANDS(1),1,K)
+ ;                       00002660      CALL SEND; GOTO NEXTIDO;  
+                                         00002670 OPCD: OPCODE = 
+ SUBSTR(SOURCE,ISCAN,3);                                 00002680
+       ISCAN=ISCAN+3;                                            
+         00002690         DO J=1 TO 8; OPERANDS(J)=' '; END;     
+                         00002700
+block 141: 800 bytes at time 8.49195520, ok
+       J=1;                                                      
+         00002710 OPSCAN:DO WHILE(SUBSTR(SOURCE,ISCAN,1)  = ' ');
+                         00002720      CALL SEND;                
+                                         00002730      END;      
+                                                         00002740
+  PUTCD: K=1;                                                    
+         00002750 PCD1:DO WHILE(SUBSTR(SOURCE,ISCAN,1) ^= ','& SU
+ BSTR(SOURCE,ISCAN,1) ^= 00002760      ';' & K<= 12);            
+                                         00002770      IF K<= 8 T
+ HEN                                                     00002780
+       DO; SUBSTR(OPERANDS(J),K,1)=SUBSTR(SOURCE,ISCAN,1);       
+         00002790      K=K+1;                                    
+                         00002800
+block 142: 800 bytes at time 8.52386048, ok
+       END;                                                      
+         00002810      CALL SEND;                                
+                         00002820        IF K> 8 &(OPCODE='QSF'|O
+ PCODE='QST'| OPCODE= 'MSG' )  THEN      00002830 STRNG: DO; DO W
+ HILE(SUBSTR(SOURCE,ISCAN,1) ^= ',' & SUBSTR(SOURCE      00002840
+       ,ISCAN,1) ^= ';');                                        
+         00002850       SUBSTR(OPERANDS(J),K,1)=SUBSTR(SOURCE,ISC
+ AN,1); K=K+1; CALL SEND;00002860      END; END STRNG;           
+                                         00002870      END PCD1; 
+                                                         00002880
+       OPLENGTH(J)=K-1;                                          
+         00002890      J=J+1;                                    
+                         00002900
+block 143: 800 bytes at time 8.55567104, ok
+       IF SUBSTR(SOURCE,ISCAN,1) =',' THEN                       
+         00002910 COM: DO; CALL SEND; IF SUBSTR(SOURCE,ISCAN,1)='
+ ,' THEN DO;             00002920      OPERANDS(1)=','; OPLENGTH(
+ 1)=1; CALL SEND; END; GOTO OPSCAN;      00002930      END COM;  
+                                                         00002940
+       IF SUBSTR(SOURCE,ISCAN,1)=';' THEN                        
+         00002950 SEMI: DO; CALL SEND; IF SUBSTR(SOURCE,ISCAN,1)=
+ ',' THEN DO;            00002960      OPERANDS(1)=';'; OPLENGTH(
+ 1)=1 ; CALL SEND; GOTO OPSCAN;          00002970      END; END S
+ EMI; RETURN;                                            00002980
+  SEND:PROCEDURE;                                                
+         00002990      XX: FORMAT(SKIP,A(80));                   
+                         00003000
+block 144: 800 bytes at time 8.58755072, ok
+       ISCAN=ISCAN+1;                                            
+         00003010      IF ISCAN=73 THEN                          
+                         00003020 NXTCD: DO; GET EDIT(SOURCE)(A(8
+ 0));                                    00003030      IF SUBSTR(
+ SOURCE,1,1) = '*' THEN DO;                              00003040
+       OBJECT=SOURCE; CALL OLINE;                                
+         00003050      GOTO NXTCD; END;                          
+                         00003060      SUBSTR(SOURCE,1,1) = '*'; 
+                                         00003070      OBJECT=SOU
+ RCE; CALL OLINE;                                        00003080
+       ISCAN=2;                                                  
+         00003090      END;                                      
+                         00003100
+block 145: 800 bytes at time 8.61979008, ok
+       RETURN;                                                   
+         00003110      END SEND;                                 
+                         00003120      END SCANIDO;              
+                                         00003130      END /*BEGI
+ N*/;                                                    00003140
+  LSTCRD: IBG=-2;                                                
+         00003150         SUBSTR(OBJECT,1)='STAKNM   EQU   DATBS+
+ 252'; CALL OLINE;       00003160         SUBSTR(OBJECT,1)='     
+     ORG   STAKNM'; CALL OLINE;          00003170 LSTCRD1: DO IST
+ KS = 1 TO NSTKS;                                        00003180
+       IBG=IBG+2; IB,IBB=1; CGLOB=ISTKS;                         
+         00003190         DO I=1 TO 8 WHILE(SUBSTR(CGLOB,IB,IBB) 
+ = ' '); IB=IB+1; END;   00003200
+block 146: 800 bytes at time 8.65214080, ok
+       IBB=7-IB; SUBSTR(OBJECT,1,3)='S'||SUBSTR(CGLOB,IB,IBB);   
+         00003210      SUBSTR(OBJECT,12)=IBG; IF IBG < 10 THEN SU
+ BSTR(OBJECT,16,1)='0';  00003220      SUBSTR(OBJECT,10,3)='EQU';
+  CALL OLINE;                            00003230      SUBSTR(OBJ
+ ECT,1,4)='SS'||SUBSTR(CGLOB,IB,IBB); IB,IBB=1;          00003240
+       SUBSTR(OBJECT,10,3)='EQU';                                
+         00003250              DO I=1 TO 4 WHILE(SUBSTR(STKLEN(IS
+ TKS),IB,1) ^= ' ');     00003260              IB=IB+1; END;     
+                                         00003270              DO
+  I= 1 TO 4 WHILE (SUBSTR(STKIN(ISTKS),IBB,1) ^= ' ');   00003280
+               IBB=IBB+1; END;                                   
+         00003290        SUBSTR(OBJECT,16)=SUBSTR(STKLEN(ISTKS),1
+ ,IB-1)||'*'||SUBSTR     00003300
+block 147: 800 bytes at time 8.68404608, ok
+         (STKIN(ISTKS),1,IBB-1);  CALL OLINE;                    
+         00003310      CGLOB=ISTKS; IB=1;                        
+                         00003320    DO I=1 TO  8 WHILE(SUBSTR(CG
+ LOB,IB,1)=' '); IB=IB+1; END;           00003330      SUBSTR(OBJ
+ ECT,1,8)='ENS'||SUBSTR(CGLOB,IB,7-IB);                  00003340
+        SUBSTR(OBJECT,16)=SUBSTR(STKLEN(ISTKS),1,IBB-1); CALL OLI
+ NE;     00003350       IBB=1;                                   
+                         00003360              DO I=1 TO 4 WHILE(
+ SUBSTR(STKGRT(ISTKS),IBB,1) ^= ' ');    00003370              IB
+ B=IBB+1; END;                                           00003380
+       CGLOB=ISTKS; IB=1;                                        
+         00003390    DO I=1 TO  8 WHILE(SUBSTR(CGLOB,IB,1)=' '); 
+ IB=IB+1; END;           00003400
+block 148: 800 bytes at time 8.71643136, ok
+       SUBSTR(OBJECT,1,8)='GRT'||SUBSTR(CGLOB,IB,7-IB);          
+         00003410      SUBSTR(OBJECT,16)=SUBSTR(STKGRT(ISTKS),1,I
+ BB-1); CALL OLINE;      00003420      OBJECT=CL1; IB=1;         
+                                         00003430              DO
+  I= 1 TO 8 WHILE(SUBSTR(STKNAM(ISTKS),IB,1) ^= ' ');    00003440
+               IB=IB+1; END;                                     
+         00003450       SUBSTR(OBJECT,18)='8'''||SUBSTR(STKNAM(IS
+ TKS),1,IB-1)||'''';     00003460        CALL OLINE;             
+                                         00003470        END LSTC
+ RD1;                                                    00003480
+  GLBTB1: SUBSTR(OBJECT,1)='GLBRTB   EQU   STAKNM+128'; CALL OLIN
+ E;      00003490        SUBSTR(OBJECT,1)='         ORG   GLBRTB'
+ ; CALL OLINE;           00003500
+block 149: 800 bytes at time 8.74843136, ok
+  GLBTB: DO IBG =1 TO NLABELS;                                   
+         00003510      SUBSTR(OBJECT,1)='*'||GLABELS(IBG); CALL O
+ LINE; GLOBNO='G000';    00003520      CGLOB=IBG; IB=1; DO WHILE(
+ SUBSTR(CGLOB,IB,1)=' '); IB=IB+1;  END; 00003530      IBB=7-IB; 
+ SUBSTR(OBJECT,1)='YG'||SUBSTR(CGLOB,IB,IBB);            00003540
+       SUBSTR(OBJECT,10,2)='DC'; SUBSTR(GLOBNO,5-IBB,IBB)=SUBSTR(
+ CGLOB,IB00003550      ,IBB); SUBSTR(OBJECT,16)= 'AL2('||GLOBNO||
+ '-GLBSTRT)'; CALL OLINE;00003560      END GLBTB;                
+                                         00003570 STKST1: SUBSTR(
+ OBJECT,1)='STKBS    EQU   GLBRTB+252'; CALL OLINE;      00003580
+       SUBSTR(OBJECT,1)='         ORG   STKBS'; CALL OLINE;      
+         00003590       SUBSTR(OBJECT,1)='BASE     EQU   *'; CALL
+  OLINE;                 00003600
+block 150: 800 bytes at time 8.78056064, ok
+       OBJECT=AL1;                                               
+         00003610 STKSTS: DO ISTKS=1 TO NSTKS; CGLOB=ISTKS; IB=1;
+                         00003620      DO WHILE(SUBSTR(CGLOB,IB,1
+ )=' '); IB=IB+1; END; IBB=7-IB;         00003630       SUBSTR(OB
+ JECT,18)='2(STK'||SUBSTR(CGLOB,IB,IBB)||'-STKBS)';      00003640
+        CALL OLINE; END STKSTS;                                  
+         00003650 STKST2: SUBSTR(OBJECT,1)='TOP      EQU   BASE+3
+ 2'; CALL OLINE;         00003660      SUBSTR(OBJECT,1)='        
+  ORG   TOP'; CALL OLINE;                00003670      OBJECT = A
+ L1;                                                     00003680
+  STKS3:DO ISTKS=1 TO NSTKS; CGLOB=ISTKS; IB=1;                  
+         00003690       DO WHILE(SUBSTR(CGLOB,IB,1)=' '); IB=IB+1
+ ;END; IBB=7-IB;         00003700
+block 151: 800 bytes at time 8.81283200, ok
+        SUBSTR(OBJECT,18)='2(STK'||SUBSTR(CGLOB,IB,IBB)||'-STKBS)
+ ';      00003710       CALL OLINE; END STKS3;                   
+                         00003720 STKST4: SUBSTR(OBJECT,1)='BOT  
+     EQU   TOP+32';  CALL OLINE;         00003730      SUBSTR(OBJ
+ ECT,1)='         ORG   BOT'; CALL OLINE; OBJECT=AL1;    00003740
+  STKS5:DO ISTKS=1 TO NSTKS; CGLOB=ISTKS; IB=1;                  
+         00003750       DO WHILE(SUBSTR(CGLOB,IB,1)=' '); IB=IB+1
+ ;END; IBB=7-IB;         00003760      SUBSTR(OBJECT,18)='2(STK'|
+ |SUBSTR(CGLOB,IB,IBB)||'-STKBS-ENS'||   00003770      SUBSTR(CGL
+ OB,IB,IBB)||')'; CALL OLINE; END STKS5;                 00003780
+  STKST6: SUBSTR(OBJECT,1)='SIZE     EQU   BOT+32';  CALL OLINE; 
+         00003790      SUBSTR(OBJECT,1)='         ORG   SIZE'; CA
+ LL OLINE; OBJECT=AL1;   00003800
+block 152: 800 bytes at time 8.84461056, ok
+  STKST7: DO ISTKS=1 TO NSTKS; CGLOB=ISTKS; IB=1;                
+         00003810      DO WHILE(SUBSTR(CGLOB,IB,1)=' '); IB=IB+1;
+  END; IBB=7-IB;         00003820      SUBSTR(OBJECT,18)='1(GRT'|
+ |SUBSTR(CGLOB,IB,IBB)||',ENS'||         00003830      SUBSTR(CGL
+ OB,IB,IBB)||')'; CALL OLINE; END STKST7;                00003840
+       SUBSTR(OBJECT,1)='STKBSR EQU SIZE+32'; CALL OLINE;        
+         00003850      SUBSTR(OBJECT,1)='         ORG STKBSR'; CA
+ LL OLINE;               00003860      SUBSTR(OBJECT,1)='ABASE   
+ EQU   *';CALL OLINE;                    00003870         OBJECT=
+ AL1;                                                    00003880
+          DO ISTKS=1 TO NSTKS; CGLOB=ISTKS; IB=1;                
+         00003890      DO WHILE(SUBSTR(CGLOB,IB,1)=' '); IB=IB+1;
+  END; IBB=7-IB;         00003900
+block 153: 800 bytes at time 8.87652992, ok
+        SUBSTR(OBJECT,18)='2(STK'||SUBSTR(CGLOB,IB,IBB)||'-STKBS)
+ ';      00003910      CALL OLINE;  END;                         
+                         00003920      SUBSTR(OBJECT,1)='ATOP   E
+ QU   ABASE+32';CALL OLINE;              00003930      SUBSTR(OBJ
+ ECT,1)='         ORG   ATOP';CALL OLINE;                00003940
+       OBJECT=AL1;                                               
+         00003950       DO ISTKS=1 TO NSTKS; CGLOB=ISTKS; IB=1;  
+                         00003960       DO WHILE(SUBSTR(CGLOB,IB,
+ 1)=' '); IB=IB+1;END; IBB=7-IB;         00003970       SUBSTR(OB
+ JECT,18)='2(STK'||SUBSTR(CGLOB,IB,IBB)||'-STKBS)';      00003980
+       CALL OLINE;  END;                                         
+         00003990      SUBSTR(OBJECT,1)='ABOT    EQU  ATOP+32'; C
+ ALL OLINE;              00004000
+block 154: 800 bytes at time 8.90867584, ok
+       SUBSTR(OBJECT,1)='         ORG ABOT'; CALL OLINE; OBJECT=A
+ L1;     00004010       DO ISTKS=1 TO NSTKS; CGLOB=ISTKS; IB=1;  
+                         00004020       DO WHILE(SUBSTR(CGLOB,IB,
+ 1)=' '); IB=IB+1;END; IBB=7-IB;         00004030      SUBSTR(OBJ
+ ECT,18)='2(STK'||SUBSTR(CGLOB,IB,IBB)||'-STKBS-ENS'||   00004040
+       SUBSTR(CGLOB,IB,IBB)||')'; CALL OLINE; END;               
+         00004050      SUBSTR(OBJECT,1)='STKBGN  EQU   ABOT+32'; 
+ CALL OLINE;             00004060      SUBSTR(OBJECT,1)='        
+  ORG   STKBGN'; CALL OLINE;             00004070      SUBSTR(OBJ
+ ECT,1)='STK1     DS    (SS1)C'; CALL OLINE;             00004080
+       SUBSTR(OBJECT,1)='         DS   (4000+STKBS-STKBGN)C';    
+         00004090      CALL OLINE; SUBSTR(OBJECT,1)='         DS'
+ ;                       00004100
+block 155: 800 bytes at time 8.94078848, ok
+  STKST9: DO ISTKS = 2 TO NSTKS; CGLOB = ISTKS; IB=1;            
+         00004110      DO WHILE(SUBSTR(CGLOB,IB,1)=' '); IB=IB+1;
+  END; IBB=7-IB;         00004120      SUBSTR(OBJECT,1)='STK'||SU
+ BSTR(CGLOB,IB,IBB)||'      DS   (SS'||  00004130      SUBSTR(CGL
+ OB,IB,IBB)||')C'; CALL OLINE; END STKST9;               00004140
+       SUBSTR(OBJECT,1)='         END'; CALL OLINE;              
+         00004150      RETURN;                                   
+                         00004160 OLINE: PROCEDURE;              
+                                         00004170      WRITE FILE
+ (PUNCH) FROM (OBJECT);                                  00004180
+       RETURN;                                                   
+         00004190      END OLINE;                                
+                         00004200
+block 156: 80 bytes at time 8.95481344, ok
+       END IDOSEM;                                               
+         00004210
+tape mark at time 9.02242688
+end of file
+
+there were 156 data blocks with 122,960 bytes, and 7 tapemarks
+no blocks had errors
+no blocks had warnings

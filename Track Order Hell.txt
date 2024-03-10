@@ -1,0 +1,96 @@
+123456789 - Human Counting
+204P56713 - Binary Weight
+476539182 - ANSI Track Number
+573P21064 - Physical Track Order on Tape
+476539182 - ANSI Track Number
+765391824 - Len Shustek Order (shifted one to the left from ANSI Track Number)
+987654321 - Reverse Human Counting
+
+
+Tape Mark??!!!
+11101100P1
+76539182_4
+12345678P9
+204P56713
+01234567P
+
+Parity is track 4
+7 is 0 and 0 is 7
+
+76543210 
+01234567
+
+11101100P1
+76539182_4
+12345678P10
+
+if i=1 then mBit6=Mid(TheByte,i,1)
+if i=2 then mBit8=Mid(TheByte,i,1)
+if i=3 then mBit4=Mid(TheByte,i,1)
+if i=4 then mBitP=Mid(TheByte,i,1)
+if i=5 then mBit3=Mid(TheByte,i,1)
+if i=6 then mBit2=Mid(TheByte,i,1)
+if i=7 then mBit1=Mid(TheByte,i,1)
+if i=8 then mBit7=Mid(TheByte,i,1)
+if i=10 then mBit5=Mid(TheByte,i,1)
+Next i
+TheByte = mBit1+mBit2+mBit3+mBit4+mBit5+mBit6+mBit7+mBit8+"P"+mBitP ' Start @ 1
+TheByte = mBit8+mBit7+mBit6+mBit5+mBit4+mBit3+mBit2+mBit1+"P"+mBitP ' Start @ 7
+
+
+Option 2
+If i=1 Then mBit7=Mid(TheByte,i,1)
+If i=2 Then mBit6=Mid(TheByte,i,1)
+If i=3 Then mBit5=Mid(TheByte,i,1)
+If i=4 Then mBit3=Mid(TheByte,i,1)
+If i=5 Then mBitP=Mid(TheByte,i,1)
+If i=6 Then mBit1=Mid(TheByte,i,1)
+If i=7 Then mBit8=Mid(TheByte,i,1)
+If i=8 Then mBit2=Mid(TheByte,i,1)
+If i=10 Then mBit4=Mid(TheByte,i,1)
+
+
+Option 3
+If i=1 Then mBit2=Mid(TheByte,i,1)
+If i=2 Then mBit8=Mid(TheByte,i,1)
+If i=3 Then mBit1=Mid(TheByte,i,1)
+If i=4 Then mBitP=Mid(TheByte,i,1)
+If i=5 Then mBit3=Mid(TheByte,i,1)
+If i=6 Then mBit5=Mid(TheByte,i,1)
+If i=7 Then mBit6=Mid(TheByte,i,1)
+If i=8 Then mBit7=Mid(TheByte,i,1)
+If i=10 Then mBit4=Mid(TheByte,i,1)
+
+Option 4
+If i=1 Then mBit7=Mid(TheByte,i,1)
+If i=2 Then mBit8=Mid(TheByte,i,1)
+If i=3 Then mBit1=Mid(TheByte,i,1)
+If i=4 Then mBitP=Mid(TheByte,i,1)
+If i=5 Then mBit3=Mid(TheByte,i,1)
+If i=6 Then mBit5=Mid(TheByte,i,1)
+If i=7 Then mBit6=Mid(TheByte,i,1)
+If i=8 Then mBit7=Mid(TheByte,i,1)
+If i=10 Then mBit4=Mid(TheByte,i,1)
+
+
+
+204P56713 - Binary Weight (inverse of physical track with Parity being the common)
+573P21064 - Physical Track Order on Tape
+123456789 - Human Counting
+
+
+Device Control Character, DC3 (“1” mBits in tracks 2, 3, and 8 only).
+
+
+795143286
+7951P3286
+P12345678
+7653P1824
+6542P0713
+
+281935674
+01234567P
+
+76543210
+87654321
+10000110P0

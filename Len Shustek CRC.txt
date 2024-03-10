@@ -1,0 +1,14 @@
+crc = 0   // set all 9 CRC bits to 0
+for all characters "ch" in the block (not including CRCC or LRCC) in sequence {
+   crc = crc XOR ch  // add without carries, C0...C7, P
+   if crc AND binary(000000010) {      // if P will be 1 after the upcoming rotate right,
+      crc = crc XOR binary(011110000)  // then invert what will become C2, C3, C4, C5
+      }
+   // do a 9-bit rotate to the right:
+   lsb = crc & 1    // first make a copy of the rightmost bit
+   crc = crc SHR 1  // shift right by one bit, losing the rightmost bit
+   if lsb EQ 1 {    // if the preserved rightmost bit was a one
+      crc = crc OR binary(100000000)  // put it back at the left
+      }
+   } // loop until all data characters have been processed
+crc = crc XOR binary(110101111)  // invert all bits except C2 and C4
